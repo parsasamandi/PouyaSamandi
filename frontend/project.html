@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Projects</title>
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="assets/css/cv.css" rel="stylesheet" />
+
+</head>
+
+
+<script>
+
+    // address diffrent parts of website
+    function goto($hashtag) {
+        document.location = "project.html#" + $hashtag;
+    }
+
+    // Hide submenus
+    function SidebarCollapse() {
+        $('.menu-collapsed').toggleClass('d-none');
+        $('.sidebar-submenu').toggleClass('d-none');
+        $('.submenu-icon').toggleClass('d-none');
+        $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
+
+        // Treating d-flex/d-none on separators with title
+        var SeparatorTitle = $('.sidebar-separator-title');
+        if (SeparatorTitle.hasClass('d-flex')) {
+            SeparatorTitle.removeClass('d-flex');
+        } else {
+            SeparatorTitle.addClass('d-flex');
+        }
+
+        // Collapse/Expand icon
+        $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
+    }
+
+</script>
+
+<body class="is-preload">
+    <!-- Sidebar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top navBarStyle" id="sideNav">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">Pouya Samandi</span>
+            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+                    src="images/pouya2.jpeg" alt="" /></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul style="font-size:16px" class="navbar-nav">
+                <li style="font-size:30px;" class="text-white">Projects</li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Kinematic-Calibration')">Kinematic Calibration</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Walker-Robot-Control')">Walker Robot Control</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Dexterous-Robotic-Finger')">Dexterous Robotic Finger</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Robot-Finger')">Robat Finger Fabrication </a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Calibrating-Temperature-Sensor')">Calibrating Temperature Sensor</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Pipeline-Intelligent-Gauge')">Pipeline Intelligent Gauge</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Mass-detection')">Center of Mass detection</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Work-experience')">Work experience</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Trainees')">Trainees</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <a class="navbar-brand text-white" href="#">Pouya Samandi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="cv.html">CV</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="project.html">Projects</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" onclick="goto('footer')">Contact me </a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2 bg-white" type="search" placeholder="Search" aria-label="Search">
+                <button style="font-size:11px" class="btn bg-white" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Page Content-->
+    <div class="container-fluid p-0">
+        <!-- Kinematic-Calibration -->
+        <section style="margin-bottom:-1em" class="resume-section" id="Kinematic-Calibration">
+            <div class="resume-section-content">
+                <h3 style="margin-top:1.7em">Kinematic Calibration Of Sina-Flex Surgical Robot By Using Optimization And
+                    Machine Learning Methods.&nbsp;<i class="fa fa-tasks"></i>
+                </h3>
+                <div>
+                    <div class="flex-grow-1 text-justify">
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <p>
+                                    <br>
+                                    Sina-flex is a surgical robot for performing laparoscopic surgeries and has been
+                                    designed and fabricated at Sina medical and Robotics Co. Like all the robots,
+                                    precision is one of the main concerns and it's varies based on the application.
+                                    Sina-flex has three serial DOF and two parallel DOF. The end of the tool is
+                                    snakeskin robots, which impairs the calibration process. Because of the relatively
+                                    high error, the calibration of the Sina robot started.
+                                    The classical methods were not very practical in this project, and the Genetic
+                                    Algorithms (GA) and Neural Networks (NN), which are the newer and more accurate
+                                    methods, were used in this project.
+                                </p>
+                            </div>
+                            <div style="background-color:#F5F5F5" class="col-md-5 mb-3">
+                                <img style="width:100%;height:auto" src="images/chart.png" />
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col-md-7">
+                                <p>
+                                    The reason for using both Genetic Algorithms and Neural Networks was to investigate
+                                    the behavior of the system after calibration in different ways. Optimization is a
+                                    model-depended. However, Neural Networks is a model-independent. In the genetic
+                                    method, the goal is to update the DH parameters, although in the Neural Network, the
+                                    goal is only to find a relation between inputs and outputs.
+                                    The test was performed in four steps. The first step was the calibration of the
+                                    first three serial DOF, the second step was the calibration of the parallel part of
+                                    the robot known as the agile eye, the third part was the laparoscopic tool
+                                    calibration alone ,and last, the overall performance of the robot after the separate
+                                    calibration of each part was checked. In the end, the inverse kinematics of the
+                                    robot must also be computed, which can also be found by the neural network and
+                                    partial derivation method.
+                                    Results were impressive and precision enhanced more than 90 percent. Results of this
+                                    project will be published soon.
+                                </p>
+                            </div>
+                            <div class="col-md-5">
+                                <iframe width="100%" height="350" src="https://www.youtube.com/embed/lu2r31NVulA"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                <br>
+                                <p style="font-family:Arial;text-align:center" class="justify-content text-secondary">
+                                    Sina-flex data mining for kinematic calibration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Walker-Robot-Control -->
+        <section class="resume-section-noMg resume-section-bg" id="Walker-Robot-Control">
+            <div class="resume-section-content">
+                <h3 class="mb-4">
+                    Control Of A Two-Wheeled Walker Robot For Balance Enhancement.
+                </h3>
+                <hr>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1 justify-center">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <p>
+                                    The purpose of the project was to design a PID controller for a Walker robot that
+                                    helps humans walk along a straight and curved path. The walker has two wheels with a
+                                    torque control as an input.
+                                    To accomplish this project, it was first necessary to calculate the expected path by
+                                    solving the LIPM equations. The control was then designed to minimize the
+                                    interactive force between the human and Walker-Robot. One of the challenges of this
+                                    project was the design of two input-output controlling system, which was done by
+                                    MATLAB Simulink.
+                                    The PID controller has been designed and some of the results are shown below.
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <img class="img-fluid" src="images/balance.jpg" />
+                                <p class="justify-content text-secondary short_desc">
+                                    Integrated Model of Human Walking with Walker Robot in Two Dimensions
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img style="width:100%;height:auto;" src="images/walker_robat.png" />
+                                <p class="justify-content text-secondary">
+                                    first: interaction force between a human and walker robot
+                                    second: implemented torque in the walker wheel
+                                </p>
+                            </div>
+                            <!-- mt-8 -->
+                            <div class="col-md-6">
+                                <img style="width:100%;height:auto" src="images/walking_path.png" />
+                                <p class="justify-content text-secondary short_desc">
+                                    first: human relative walking path
+                                    second: implemented torque on the ankle
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!--  Dexterous Robotic Finger -->
+        <section class="resume-section-noMg resume-section" id="Dexterous-Robotic-Finger">
+            <div class="resume-section-content">
+                <h3 class="mb-3">
+                    B.Sc Thesis, Dexterous Robotic Hand Named <span class="text-primary">Yasin</span> <i
+                        class="fas fa-robot"></i>
+                </h3>
+                <hr>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1 justify-center">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <p>
+                                    My B.Sc. thesis and project have started atthe beginning of 2017. The project is to
+                                    make a dexterous robotic hand which is actuated by cables. The main application of
+                                    such a robot is the instance where people do not have the ability to be present. You
+                                    can find more details in my article by the name of <span class="text-primary">Design
+                                        and fabrication of a new
+                                        robot finger</span> which has been published in <span
+                                        class="text-primary">Xmech-2018.</span>
+                                </p>
+                            </div>
+                            <div style="background-color:#F5F5F5" class="col-md-3">
+                                <img style="width:100%;height:100%;" src="images/yasin_model2.jpeg" />
+                                <p class="justify-content text-secondary short_desc">
+                                    render model of a robotic finger, named Yasin in Solidworks.
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row mt-7">
+                            <div class="col-md-9">
+                                <p>
+                                    The robotic finger has been designed in Solidworks and simulated in ADAMS. Some
+                                    prototypes have been fabricated for the project and in each prototype the model has
+                                    improved. As the first serious project for me, Yasin helped me to be more familiar
+                                    with the manufacturing process such as machining and the process of fabricating a
+                                    model. The finger was designed and fabricated and results were acceptable.
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <img style="width:100%;height:100%" src="images/Yasin_model.jpg" />
+                                <p class="justify-content text-secondary short_desc">
+                                    Analyzing the designed model in ADAMS
+                                </p>
+                            </div>
+                        </div>
+                        <Br>
+                        <div class="row mt-5">
+                            <div class="col-md-9">
+                                <p>
+                                    The design is inspired by one of the greatest conducted robotic hands. DLRIII is one
+                                    of the most beautiful and complicated robots. The main purpose of the project is to
+                                    improve the construction of the design. The goal was decreasing the complexity and
+                                    reducing the cost of the construction. The goal is achieved by decreasing the number
+                                    of motors and altering the design. By using a cheaper fabricating process like
+                                    3D-printers, the cost of the fabrication diminished.
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <img style="width:100%;height:100%" src="images/robaticArm.jpg" />
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <iframe width="100%" height="400" src="https://www.youtube.com/embed/6TzaqW4kdQk"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="col-md-6">
+                                <iframe width="100%" height="400" src="https://www.youtube.com/embed/tOSGJEEAEmE"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="col-md">
+                                <p class="justify-center text-secondary short_desc">
+                                    3 DOF robotic finger. The robot has been designed By SolidWorks and fabricated by a
+                                    3D-printer. The robot has three actuators and the Arduino controls them. The design
+                                    has
+                                    been improved and the results will be published.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Participated Conference -->
+        <section class="resume-section resume-section-bg" id="Robot-Finger">
+            <div class="resume-section-content">
+                <h4 class="test-danger">
+                    Design And Fabrication Of A New Robot Finger, Biennial International Experimental Solid Mechanics,
+                    Conference 2017, Tehran, Iran.
+                </h4>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            Abstract- Dexterous robotic hands are not very popular in production lines. Complexity in
+                            mechanism and operation makes such hands less appealing for conventional industrial
+                            applications. In this paper,
+                            a structurally simple robotic finger with 3 degrees of freedom, named Yasin is designed and
+                            fabricated. Compared to other similar designs, the new mechanism is less complicated to
+                            build and maintain, and is better suited for control purposes in low-cost applications.
+
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            Numbers of driving motors, which are located in the forearm, are just a few for better
+                            similarity with human hands, in terms of number of axles and their relative motions. On the
+                            other hand, lengths of the tendons are not fixed for different movements. Instead, the
+                            overall length of the cables used for induction of force from one finger to another is
+                            fixed. The
+                            general structure of the proposed mechanism is explained and elaborated.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Calibrating Temperature Sensor -->
+        <section class="resume-section" id="Calibrating-Temperature-Sensor">
+            <div class="resume-section-content">
+                <h3 class="mb-3">
+                    Calibrating Temperature Sensor And Measuring Ambient Temperature.
+                </h3>
+                <div class="row">
+                    <div class="col-md-7">
+                        <p class="justify-center">
+                            This project was completed pertaining to the lesson for measuring instruments. The project
+                            was about calibrating the sensor to measure the ambient temperature. After a great
+                            collaboration with my team members and getting more than a hundred data points the results
+                            were astonishing. The sensor's accuracy was 0.1 °C. An NTC thermistor was used which had a
+                            negative resistance coefficient.
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img style="width:100%;height:auto" src="images/derived_coefficient.png" />
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-7">
+                        <p>
+                            Standard deviation and a Gaussian diagram are illustrated in the tables below. The condition
+                            number was 28.2 and that is an acceptable range. As a leader, my challenge was to gather up
+                            teammates and work with people who had different knowledge and background levels. The
+                            results were perfect and this experiment taught me how to work with different types of
+                            people.
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img style="width:100%;height:auto" src="images/measuring.png" />
+                        <p class="text-secondary short_desc">
+                            <!-- justify-center what to do? -->
+                            the measured outputs voltage convert to temperature by using ٍIstine-Heart equation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Pipeline Intelligent Gauge -->
+        <section class="resume-section resume-section-bg" id="Pipeline-Intelligent-Gauge">
+            <div class="resume-section-content">
+                <div class="row mt-5-design">
+                    <div class="col-md-7">
+                        <h3 class="mb-3">
+                            Pipeline Intelligent Gauge (PIG).
+                        </h3>
+                        <p class="justify-center">
+                            When talking about the context of pipelines we refer to using devices known as PIG to
+                            perform various maintenance operations. This is done without stopping the flow of the
+                            product in the pipeline. These operations include cleaning and inspecting pipelines but they
+                            are not particularly limited to those tasks. This project helped us learn how to make
+                            scientific research and familiarize ourselves with the mechanics. A model was designed in
+                            Catia and simulated in Ansys fluent and even though they were never constructed we
+                            discovered some newfound interests.
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img style="width:100%;height:auto" src="images/smartPiginLine.png" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Center of Mass detection -->
+        <section class="resume-section" id="Mass-detection">
+            <div class="resume-section-content">
+                <h3 class="mb-3">
+                    Designing And Fabricating A Device For Determining Center Of Mass For A Complex Body.
+                </h3>
+                <div class="justify-center">
+                    <p>
+                        Teamwork started from the beginning of my BSc. It started with an instrument which determined
+                        the center of the mass in two directions. Finding the center of mass for complex bodies has an
+                        application in some high-tech instruments like model helicopters and etc. It was the beginning
+                        of our journey atuniversity and it was a big step for us.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Work experience -->
+        <section class="resume-section resume-section-bg" id="Work-experience">
+            <div class="resume-section-content">
+                <h3 class="mb-3">
+                    Working And Researching At Sina Medical And Robotics Co.
+                </h3>
+                <div class="row">
+                    <div class="col-md-7 justify-center">
+                        <p>
+                            Sina medical and Robotics (Sinamed) Co., is fabricating surgical robots and medical
+                            instruments.
+                            The company is one of the pioneers of robotics in Iran and is expanding its activities into
+                            other countries.
+                            My work in this company started in January 2019.
+                            As a fledgling company, there was a lot of work to be done in the company, along with
+                            research
+                            activities, business negotiations, strategic planning, and other small-scale projects that
+                            required to be done in a startup company has been done.
+                            Please click on Sinamed Co. for more information.
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <iframe width="100%" height="300" src="https://www.youtube.com/embed/SdELosO4s8A" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Trainees -->
+        <section class="resume-section" id="Trainees">
+            <div class="resume-section-content">
+                <h3 class="mb-3">
+                    Trainee At Otad Sanat Company For 350 Hours
+                </h3>
+                <div class="row">
+                    <div class="col-md-9 justify-center">
+                        <p>
+                            Most of the universities' professors agree on the idea that working as a trainee in the
+                            industry is essential to understanding the mechanics. Otad Sanat is the place that showed me
+                            the influences of the lessons in industry. Otad's concentration is on steel Industries.
+                            Their main job is designing and constructing measurements system for special instruments.
+                            Click on Otad Sanat Novin Co. for more information.
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <img style="width:100%;height:100%" src="images/otad2.png" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <!-- Menu -->
+        <ul class="menu">
+			<a href="mailto:p.samandizadeh.shoushtari">samandi.pouya@gmail.com</a>
+        </ul>
+    </footer>
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.poptrox.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
+<!-- #bd5d38 -->

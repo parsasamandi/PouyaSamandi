@@ -20,7 +20,7 @@ Route::post('/','pouyaController@storeEmail');
 
 Route::group(['middleware' => 'auth'], function () {
   // Admin Page
-  Route::get('/adminHome','AdminController@adminHome');
+  Route::get('/admin/home','AdminController@adminHome');
   Route::get('/logout', 'AdminController@logout');
   // Experience
   Route::group(['prefix' => 'experience', 'as' => 'experience.'], function() {
@@ -121,10 +121,10 @@ Route::group(['middleware' => 'auth'], function () {
   // Link
   Route::group(['prefix' => 'link' ,'as' => 'link.'], function() {
     Route::get('list', 'LinkController@list')->name('table');
-    Route::get('list/table', 'LinkController@linkTable')->name('list.table');->middleware('signed');
+    Route::get('list/table', 'LinkController@linkTable')->name('list.table')->middleware('signed');
     Route::post('new', 'LinkController@store')->name('store');
     Route::get('edit', 'LinkController@edit')->name('edit');
-    Route::get('eachDesc', 'LinkController@eachDesc')->name('eachDesc')
+    Route::get('eachDesc', 'LinkController@eachDesc')->name('eachDesc');
     Route::get('/delete/{id}', 'LinkController@delete')->name('delete');
   });
   // Project

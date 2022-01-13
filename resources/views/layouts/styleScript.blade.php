@@ -10,7 +10,6 @@
     <title>Pouya Samandi</title>
     <link href="{{ mix('css/cvProj.css') }}" rel="stylesheet" />
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
-    
 @show
 
 <script>
