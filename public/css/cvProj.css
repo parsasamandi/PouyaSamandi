@@ -27,6 +27,7 @@ h1 {
 
 p {
   color: gray !important;
+  margin: 0 !important;
 }
 
 li {
@@ -527,17 +528,17 @@ section.resume-section {
 
 /* Justify Aligned Text */
 .justify-center{
-  text-align:justify; 
+  text-align: justify; 
 }
 
 @media (min-width: 1000px) {
   .justify-center{
-    text-align:justify; 
+    text-align: justify; 
   }
 }
 @media (min-width: 992px) {
   .justify-center{
-    text-align:justify; 
+    text-align: justify; 
   }
 }
 

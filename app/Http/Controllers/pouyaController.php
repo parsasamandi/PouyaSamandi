@@ -36,20 +36,13 @@ class pouyaController extends Controller
     // CV page
     public function indexCv()
     {
-        $experience = Experience::all();      
-        $education = Education::all();   
-        $publication = Publication::all();   
-        $interest = Interest::all();   
-        $skill = Skill::all();   
-        $refree = Refree::all();   
-        return view('cv', [
-            'experience' => $experience,
-            'education' => $education,
-            'publication' => $publication,
-            'interest' => $interest,
-            'skill' => $skill,
-            'refree' => $refree
-        ]);
+        $vars['experience'] = Experience::all();      
+        $vars['publication'] = Publication::all();   
+        $vars['interest'] = Interest::all();   
+        $vars['skill'] = Skill::all();   
+        $vars['refree'] = Refree::all();   
+
+        return view('cv', $vars);
     }
 
     // login

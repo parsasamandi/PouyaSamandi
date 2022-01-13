@@ -15,7 +15,7 @@ Route::get('/cv','pouyaController@indexCv');
 Route::get('/project','ProjectController@index');
 Route::get('/login/login',[ 'as' => 'login.login', 'uses' => 'Auth\LoginController@index']);
 Route::post('/post-login', 'Auth\LoginController@store');   
-Route::get('/','HomeController@index');
+Route::get('/','GeneralController@index');
 Route::post('/','pouyaController@storeEmail');
 
 Route::group(['middleware' => 'auth'], function () {
