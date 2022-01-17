@@ -1,11 +1,11 @@
 @extends('layouts.admin')
-@section('title','Skill List')
+@section('title', 'Skill List')
 
 @section('content')
     {{-- Header --}}
-    <x-admin.header pageName="Skill">
+    <x-admin.header pageName="Skill" secondButton="Description">
         <x-slot name="table">
-            {!! $skillTable->table(['class' => 'table table-striped table-bordered w-100 nowrap text-center']) !!}
+            <x-table :table="$skillTable" />
         </x-slot>
     </x-admin.header>
 
@@ -15,103 +15,108 @@
             <div class="row">
                 {{-- Title --}}
                 <div class="col-md-12">
-                    <label for="title"></label>
-                    <input id="title" name="title" Placeholder="Title" type="text" class="form-control">
+                    <label for="title">Title:</label>
+                    <input id="title" name="title" Placeholder="Title" type="text" class="form-control mb-3">
+
+                    <label for="title">Description:</label>
+                    <select id='descriptions' name='descriptions' class="custom-select" multiple>
+                        @foreach ($descriptions as $description)
+                            <option value="{{ $description->description }}">{{ $description->description }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
         </x-slot>
     </x-admin.insert>
 
     {{-- Delete Modal --}}
-    <x-admin.delete title="Do you confirm to delete skill?" />
+    <x-admin.delete title="Do you confirm to delete this skill?" />
+
+    <!-- Skill description modal -->
+    <div id="skillDescriptionModal" class="modal fade bd-example-modal">
+        <div class="modal-dialog modal-l">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="skillDescriptionForm" class="form-horizontal" enctype="multipart/form-data">
+                        <span id="form_output2"></span>
+                        {{ csrf_field() }}
+
+                        <textarea rows="7" type="text" id="description" name="description" placeholder="Description"
+                            class="form-control mt-1"></textarea>
+
+                        <br />
+                        <div class="form-group" align="center">
+                            {{-- <input type="hidden" name="id" id="id" value="" /> --}}
+                            {{-- <input type="hidden" id="button_action2" value="insert" /> --}}
+                            <input type="submit" name="submit" id="action2" value="Insert" class="btn btn-primary" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 {{-- Scripts --}}
 @section('scripts')
-@parent
+    @parent
     {{-- Skill Table --}}
     {!! $skillTable->scripts() !!}
 
     <script>
         $(document).ready(function() {
-            // SKill Table
+            // Admin DataTable And Action Object
             let dt = window.LaravelDataTables['skillTable'];
-            // Record Modal
-            $('#create_record').click(function () {
-                $('#formModal').modal('show');
-                $('#skillForm')[0].reset();
-                $('#form_output').html('');
+            let action = new RequestHandler(dt, '#skillForm', 'skill');
+
+            // Record modal
+            $('#create_record').click(function() {
+                action.openModal();
             });
-            // Create a new one
-            $('#skillForm').on('submit', function(event) {
-                event.preventDefault();
-                var form_data = $(this).serialize();
-                $.ajax({
-                    url: "{{ route('skill.store') }}",
-                    method: "POST",
-                    data: form_data,
-                    processing: true,
-                    dataType: "json",
-                    success: function (data) { 
-                        $('#form_output').html(data.success);
-                        $('#skillForm')[0].reset();
-                        $('#button_action').val('insert');
-                        dt.draw(false);
-                    },
-                    error: function(data) { 
-                        // Parse To Json
-                        var data = JSON.parse(data.responseText);
-                        // Error
-                        error_html = '';
-                        for(var all in data.errors) {
-                            error_html += '<div class="alert alert-danger">' + data.errors[all] + '</div>';
-                        }
-                        $('#form_output').html(error_html);
-                    }
-                })
-            });
-            // Edit
-            window.showEditModal = function showEditModal(url) {
-                editSkill(url);
+            // Insert
+            action.insert();
+
+            // Delete
+            window.showConfirmationModal = function showConfirmationModal(url) {
+                action.delete(url);
             }
-            function editSkill($url) {
-                var id = $url;
-                $('#formModal').modal('show');
-                $('#form_output').html('');
+            // Edit
+            window.showEditModal = function showEditModal(id) {
+                edit(id);
+            }
+
+            function edit($id) {
+                action.reloadModal();
+
                 $.ajax({
-                    url: "{{ route('skill.edit') }}",
+                    url: "{{ url('skill/edit') }}",
                     method: "get",
-                    data: {id: id},
-                    dataType: "json",
+                    data: {
+                        id: $id
+                    },
                     success: function(data) {
-                        // Get Values From Database
-                        $('#id').val(data.id);
-                        $('#button_action').val('update');
-                        $('#action').val('Update');
+
+                        action.editOnSuccess($id);
+
+                        show = '';
+                        for(var all of data.descriptions) {
+                            show += all.description + ' ';
+                        };
+
+                        $.each(show.split(" "), function(i,e){
+                            $("#descriptions option[value='" + e + "']").prop("selected", true);
+                        });
+
+                        $('#descriptions').val('').trigger('change');
+
                         $('#title').val(data.title);
                     }
                 })
             }
-            // Delete
-            window.showConfirmationModal = function showConfirmationModal(url) {
-                deleteSkill(url);
-            }
-            function deleteSkill($url) {
-                var id = $url;
-                $('#confirmModal').modal('show');
-                $('#ok_button').click(function () {
-                    $.ajax({
-                        url: "/skill/delete/" + id,
-                        method: "get",
-                        dataType: "json",
-                        success: function(data) {
-                            $('#confirmModal').modal('hide');
-                            dt.draw(false);
-                        }
-                    })
-                });
-            }
         });
-
     </script>
 @endsection

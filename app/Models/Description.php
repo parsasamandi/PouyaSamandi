@@ -30,45 +30,52 @@ class Description extends Model
     /**
      * @var array
      */
-    protected $fillable = ['project_id', 'experience_id', 'publication_id', 'desc', 'size'];
+    protected $fillable = ['description', 'description_type', 'description_id'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Get The parent description model
      */
-    public function experience()
-    {
-        return $this->belongsTo('App\Models\Experience');
+    public function description() {
+        return $this->morphTo();
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function project()
-    {
-        return $this->belongsTo('App\Models\Project');
-    }
+    // /**
+    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    //  */
+    // public function experience()
+    // {
+    //     return $this->belongsTo('App\Models\Experience');
+    // }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function description()
-    {
-        return $this->belongsTo('App\Models\Description', 'publication_id');
-    }
+    // /**
+    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    //  */
+    // public function project()
+    // {
+    //     return $this->belongsTo('App\Models\Project');
+    // }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function links()
-    {
-        return $this->hasMany('App\Models\Link', 'desc_id');
-    }
+    // /**
+    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    //  */
+    // public function description()
+    // {
+    //     return $this->belongsTo('App\Models\Description', 'publication_id');
+    // }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function media()
-    {
-        return $this->hasMany('App\Models\Media', 'desc_id');
-    }
+    // /**
+    //  * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //  */
+    // public function links()
+    // {
+    //     return $this->hasMany('App\Models\Link', 'desc_id');
+    // }
+
+    // /**
+    //  * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //  */
+    // public function media()
+    // {
+    //     return $this->hasMany('App\Models\Media', 'desc_id');
+    // }
 }

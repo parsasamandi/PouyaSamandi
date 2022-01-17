@@ -9,10 +9,8 @@ use DB;
 use Illuminate\Http\Request;
 use App\Models\Pouya;
 use App\Models\Experience;
-use App\Models\Education;
 use App\Models\Universities;
 use App\Models\Publication;
-use App\Models\Interest;
 use App\Models\User;
 use App\Models\Skill;
 use App\Models\HomeSetting;
@@ -36,11 +34,10 @@ class pouyaController extends Controller
     // CV page
     public function indexCv()
     {
-        $vars['experience'] = Experience::all();      
-        $vars['publication'] = Publication::all();   
-        $vars['interest'] = Interest::all();   
-        $vars['skill'] = Skill::all();   
-        $vars['refree'] = Refree::all();   
+        $vars['experiences'] = Experience::all();      
+        $vars['publications'] = Publication::all();      
+        $vars['skills'] = Skill::all();   
+        $vars['refrees'] = Refree::all();   
 
         return view('cv', $vars);
     }

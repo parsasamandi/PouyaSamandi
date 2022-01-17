@@ -45,12 +45,13 @@
     @yield('content')
     
     <!-- Footer -->
-    <footer id="footer">
+    {{-- <footer id="footer">
         <!-- Menu -->
         <ul class="menu">
 			<a href="mailto:p.samandizadeh.shoushtari">samandi.pouya@gmail.com</a>
         </ul>
-    </footer>
+    </footer> --}}
+    
     @section('scripts')
         <script src="/js/jquery.min.js" crossorigin="anonymous"></script>
         <script src="/js/bootstrap.min.js"></script>

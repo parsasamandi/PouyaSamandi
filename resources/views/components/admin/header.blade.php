@@ -9,8 +9,14 @@
     </ol>
 
     {{-- Button --}}
-    <button type="button" name="create_record" id="create_record"
-        class="btn btn-success btn-sm mb-2">Add {{ $pageName }}</button>
+    <button type="button" id="create_record"
+        class="btn primary_color btn-sm mb-2">Add {{ $pageName }}</button>
+
+    {{-- Second Button --}}
+    @if(!empty($secondButton))
+        <button type="button" id="skill_description"
+            class="btn primary_color btn-sm mb-2">Add {{ $secondButton }}</button>
+    @endif
 
     {{-- Responsive Table --}}
     <div class="table-responsive">

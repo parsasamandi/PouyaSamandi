@@ -17,20 +17,23 @@ mix.setResourceRoot('../');
  */
 
 // Cv And Project
-mix.styles('resources/assets/sass/_cvProj.scss','public/css/cvProj.css');
-// Authentication
-mix.styles('resources/assets/sass/_auth.scss','public/css/auth.css');
-// Admin Style
-mix.styles('resources/assets/sass/_admin.scss','public/css/admin.css');
-// Main Css
-mix.styles('resources/assets/sass/_index.scss', 'public/css/index.css');
-// Main Js
-mix.scripts('resources/assets/js/main.js','public/js/main.js');
-// App
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.styles('resources/assets/sass/_cvProj.scss','public/css/cvProj.css')
+    // Authentication
+    .styles('resources/assets/sass/_auth.scss','public/css/auth.css')
+    // Admin Style
+    .styles('resources/assets/sass/_admin.scss','public/css/admin.css')
+    // Main Css
+    .styles('resources/assets/sass/_index.scss', 'public/css/index.css')
+    // Main Js
+    .scripts('resources/assets/js/main.js','public/js/main.js')
+    // Ajax Request Handler
+    .scripts('resources/assets/js/RequestHandler.js', 'public/js/RequestHandler.js')
+    // App (Js)
+    .js('resources/assets/js/app.js', 'public/js')
+    // App (Css)
     .sass('resources/assets/sass/app.scss', 'public/css')
-// Images
-mix.copy('resources/assets/images', 'public/images');
+    // Images
+    .copy('resources/assets/images', 'public/images');
 
 mix.version();
 mix.extract();

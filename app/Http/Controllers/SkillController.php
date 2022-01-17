@@ -8,7 +8,7 @@ use App\Http\Requests\StoreSkillRequest;
 use App\Providers\Action;
 use App\Providers\SuccessMessages;
 use App\DataTables\SkillDataTable;
-use App\Models\Refree;
+use App\Models\Description;
 use App\Models\Experience;
 use App\Models\Skill;
 
@@ -23,6 +23,8 @@ class SkillController extends Controller
 
         $vars['skillTable'] = $dataTable->html();
 
+        $vars['descriptions'] = Description::select('id', 'description')->get();
+
         return view('skillList', $vars);
     }
     // DataTable
@@ -31,7 +33,7 @@ class SkillController extends Controller
     }
 
     // Store Skill
-    public function store(StoreSkillRequest $request,SuccessMessages $message) {
+    public function store(StoreSkillRequest $request, SuccessMessages $message) {
 
         // Insert
         if($request->get('button_action') == "insert") {
@@ -50,21 +52,40 @@ class SkillController extends Controller
 
     // Add Or Update Skill
     public function addSkill($request) {
-        // Edit
-        $skill = Skill::find($request->get('id'));
-        if(!$skill) {
-            // Insert
-            $skill = new Skill();
+
+        foreach($request->get('descriptions') as $description) {
+            // Edit
+            $skill = Skill::find($request->get('id'));
+            if(!$skill) {
+                // Insert
+                $skill = new Skill();
+            }
+
+            $skill->title = $request->get('title');
+            $skill->save();
+
+            // Skill's descriptions
+            $skill->descriptions()->create(['description' => $description]);
         }
-        $skill->title = $request->get('title');   
-        $skill->save();
     }
+
+    // Add Or Update Skill's description
+    public function storeDescription(Request $request, SuccessMessages $message) {
+        // Insert
+        $description = new Description();
+        $description->description = $request->get('description');   
+        $description->save();
+
+        return json_encode(array('success' => $message->getInsert()));
+    }
+
+
     // Edit
-    public function edit(Action $action,Request $request) {
-        return $action->edit($this->skill,$request->get('id'));
+    public function edit(Action $action, Request $request) {
+        return Skill::where('id', $request->get('id'))->with('descriptions')->first();
     }
     // Delete
     public function delete(Action $action,$id) {
-        return $action->delete($this->skill,$id);
+        return $action->delete($this->skill, $id);
     }
 }

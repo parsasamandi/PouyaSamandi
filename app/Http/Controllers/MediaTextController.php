@@ -24,7 +24,7 @@ class MediaTextController extends Controller
         $media_text->save();
         return back()->with('success', 'You have successfully sumbitted data'); 
     }
-
+    
     // Media Text List
     public function index()
     {

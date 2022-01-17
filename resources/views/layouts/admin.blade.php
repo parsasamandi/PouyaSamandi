@@ -1,4 +1,4 @@
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     @section('stylesheet')
         <meta charset="utf-8" />
@@ -36,6 +36,13 @@
                             {{-- CV --}}
                             <div class="sb-sidenav-menu-heading">CV</div>
 
+                            {{-- <x-admin.urlAddress text="Experience" fontAwesome="fas fa-columns" route="{{ route('experience.table') }}" />
+                            {{-- Publication list --}}
+                            {{-- <x-admin.urlAddress text="Publication" fontAwesome="fas fa-newspaper" route="{{ route('publication.table') }}" /> --}} --}}
+                            {{-- Skill List --}}
+                            <x-admin.urlAddress text="Skill" fontAwesome="fa fa-cogs" route="{{ url('skill/list') }}" />
+                            {{-- Refree List --}}
+
                         </div>
                     </div>
                 </nav>
@@ -66,9 +73,24 @@
             <script src="{{ mix('js/app.js') }}"></script>
             <script src="{{ mix('js/vendor.js') }}"></script>
             <script src="{{ mix('js/manifest.js') }}"></script>
+            {{-- Ajax Requests --}}
+            <script src="{{ asset('js/RequestHandler.js') }}"></script>
+            
             <script src="/js/all.min.js" crossorigin="anonymous"></script>
             <script src="/js/scripts.js"></script>
+
+            <script>
+                // Ajax Setup
+                $.ajaxSetup({ 
+                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                    processing: true,
+                    dataType: "json"
+                });
+                // Select2
+                $('select').select2({ width: '100%'});
+            </script>
         @show      
          
     </body>
 </html>
+

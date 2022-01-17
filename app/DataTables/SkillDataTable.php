@@ -23,8 +23,13 @@ class SkillDataTable extends DataTable
             ->eloquent($query)
             ->addIndexColumn()
             ->rawColumns(['action'])
-            ->addColumn('title', function (Skill $skill) {
+            ->editColumn('title', function (Skill $skill) {
                 return $skill->title;
+            })
+            ->addColumn('description', function (Skill $skill) {
+                foreach($skill->descriptions as $description) {
+                    return $description->description;
+                }
             })
             ->addColumn('action', function (Skill $skill) {
                 return <<<ATAG
@@ -86,6 +91,9 @@ class SkillDataTable extends DataTable
                 ->orderable(false),
             Column::make('title')
             ->title('Title')
+                ->addClass('column-title'),
+            Column::computed('description') // This column is not in database
+            ->title('Description')
                 ->addClass('column-title'),
             Column::computed('action') // This column is not in database
             ->title('Action')
