@@ -31,11 +31,7 @@
                             </h4>
                             <hr>
                             <p>
-                                @foreach ($experience->descriptions as $description)
-                                    @if (!empty($description->desc))
-                                        <p> • {{ $description->desc }} </p>
-                                    @endif
-                                @endforeach
+                                
                             </p>
                         </div>
                     </div>
@@ -154,13 +150,12 @@
                     <div class="subheading mb-3">
                         {{ $skill->title ?? null }}
                     </div>
-                    {{-- <p> {{ $skill->description ?? null }} </p> --}}
                     <ul class="fa-ul mb-0 justify-center">
                         <li>
-                            {{-- <span class="fa-li"><i class="fas fa-check"></i></span> --}}
-                            <p>  {{ $skill->description ?? null }} </p>
-                            <p> {{ $skill->desc5 ?? null }} </p>
-                            <p> {{ $skill->desc6 ?? null }} </p>
+                            @foreach ($skill->descriptions as $description)
+                                {{-- <span class="fa-li"><i class="fas fa-check"></i></span> --}}
+                                <p>  {{ $skill->description }} </p>
+                            @endforeach
                         </li>
                     </ul>
                 @endforeach

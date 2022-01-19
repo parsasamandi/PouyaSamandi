@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Skill List')
+@section('title', 'Skill list')
 
 @section('content')
     {{-- Header --}}
@@ -19,7 +19,7 @@
                     <input id="title" name="title" Placeholder="Title" type="text" class="form-control mb-3">
 
                     <label for="title">Description:</label>
-                    <select id='descriptions' name='descriptions' class="custom-select" multiple>
+                    <select id="descriptions" name='descriptions[]' class="custom-select" multiple>
                         @foreach ($descriptions as $description)
                             <option value="{{ $description->description }}">{{ $description->description }}</option>
                         @endforeach
@@ -30,35 +30,22 @@
     </x-admin.insert>
 
     {{-- Delete Modal --}}
-    <x-admin.delete title="Do you confirm to delete this skill?" />
+    <x-admin.delete title="skill" />
 
-    <!-- Skill description modal -->
-    <div id="skillDescriptionModal" class="modal fade bd-example-modal">
-        <div class="modal-dialog modal-l">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form id="skillDescriptionForm" class="form-horizontal" enctype="multipart/form-data">
-                        <span id="form_output2"></span>
-                        {{ csrf_field() }}
-
-                        <textarea rows="7" type="text" id="description" name="description" placeholder="Description"
+    {{-- Skill description modal --}}
+    <x-admin.insert modalId="skillDescriptionModal" size="modal-l" formId="skillDescriptionForm">
+        <x-slot name="content">
+            <div class="row">
+                {{-- Textarea --}}
+                <div class="col-md-12">
+                    <textarea rows="7" type="text" id="description" name="description" placeholder="Description"
                             class="form-control mt-1"></textarea>
-
-                        <br />
-                        <div class="form-group" align="center">
-                            {{-- <input type="hidden" name="id" id="id" value="" /> --}}
-                            {{-- <input type="hidden" id="button_action2" value="insert" /> --}}
-                            <input type="submit" name="submit" id="action2" value="Insert" class="btn btn-primary" />
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        </div>
-                    </form>
                 </div>
             </div>
-        </div>
-    </div>
+        </x-slot>
+    </x-admin.insert>
+
+
 @endsection
 
 {{-- Scripts --}}
@@ -69,14 +56,27 @@
 
     <script>
         $(document).ready(function() {
+            
             // Admin DataTable And Action Object
             let dt = window.LaravelDataTables['skillTable'];
             let action = new RequestHandler(dt, '#skillForm', 'skill');
 
+
+            let action2 = new RequestHandler(dt, '#skillDescriptionForm', 'skillDescriptionModal');
+
+
             // Record modal
             $('#create_record').click(function() {
+                action.cleanDropbox('#descriptions');
                 action.openModal();
             });
+
+
+            // Second button
+            $('#second_button').click(function() {
+                action2.openModal('#skillDescriptionModal');
+            });
+
             // Insert
             action.insert();
 
@@ -84,12 +84,17 @@
             window.showConfirmationModal = function showConfirmationModal(url) {
                 action.delete(url);
             }
+
             // Edit
             window.showEditModal = function showEditModal(id) {
                 edit(id);
             }
 
             function edit($id) {
+
+                // Clean dropbox
+                action.cleanDropbox('#descriptions');
+
                 action.reloadModal();
 
                 $.ajax({
@@ -102,16 +107,14 @@
 
                         action.editOnSuccess($id);
 
-                        show = '';
+                        values = '';
                         for(var all of data.descriptions) {
-                            show += all.description + ' ';
+                            values += all.description + ' ';
                         };
 
-                        $.each(show.split(" "), function(i,e){
+                        $.each(values.split(" "), function(i,e){
                             $("#descriptions option[value='" + e + "']").prop("selected", true);
                         });
-
-                        $('#descriptions').val('').trigger('change');
 
                         $('#title').val(data.title);
                     }

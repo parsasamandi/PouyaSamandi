@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use App\Models\Pouya;
 use App\Models\Experience;
 use App\Models\Universities;
-use App\Models\Publication;
 use App\Models\User;
 use App\Models\Skill;
 use App\Models\HomeSetting;
@@ -34,8 +33,7 @@ class pouyaController extends Controller
     // CV page
     public function indexCv()
     {
-        $vars['experiences'] = Experience::all();      
-        $vars['publications'] = Publication::all();      
+        $vars['experiences'] = Experience::all();           
         $vars['skills'] = Skill::all();   
         $vars['refrees'] = Refree::all();   
 

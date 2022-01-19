@@ -38,7 +38,7 @@
 
                             {{-- <x-admin.urlAddress text="Experience" fontAwesome="fas fa-columns" route="{{ route('experience.table') }}" />
                             {{-- Publication list --}}
-                            {{-- <x-admin.urlAddress text="Publication" fontAwesome="fas fa-newspaper" route="{{ route('publication.table') }}" /> --}} --}}
+                            {{-- <x-admin.urlAddress text="Publication" fontAwesome="fas fa-newspaper" route="{{ route('publication.table') }}" /> --}} 
                             {{-- Skill List --}}
                             <x-admin.urlAddress text="Skill" fontAwesome="fa fa-cogs" route="{{ url('skill/list') }}" />
                             {{-- Refree List --}}

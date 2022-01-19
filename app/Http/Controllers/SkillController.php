@@ -38,16 +38,15 @@ class SkillController extends Controller
         // Insert
         if($request->get('button_action') == "insert") {
             $this->addSkill($request);
-            $success_output = $message->getInsert();
+            $success_output = $this->getInsertionMessage();
         }
         // Update
         else if($request->get('button_action') == "update") {
             $this->addSkill($request);
-            $success_output = $message->getUpdate();
+            $success_output = $this->getUpdateMessage();
         }
 
-        $output = array('success' => $success_output);
-        return json_encode($output);
+        return json_encode(array('message' => $success_output));
     }
 
     // Add Or Update Skill
@@ -76,7 +75,7 @@ class SkillController extends Controller
         $description->description = $request->get('description');   
         $description->save();
 
-        return json_encode(array('success' => $message->getInsert()));
+        return json_encode(array('success' => $this->getInsertionMessage()));
     }
 
 

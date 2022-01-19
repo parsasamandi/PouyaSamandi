@@ -12,6 +12,6 @@ class Media_text extends Model
 
     public function mediaTextRel()
     {
-        return $this->hasMany(Media::class,'mediaText_id');
+        return $this->hasMany(Media::class, 'mediaText_id');
     }
 }

@@ -7,8 +7,8 @@ class RequestHandler {
     }
 
     // modal
-    openModal() {
-        $('#formModal').modal('show');
+    openModal(modl = '#formModal') {
+        $(modal).modal('show');
         $('#button_action').val('insert');
         $('#action').val('insert');
         $('#form_output').html('');

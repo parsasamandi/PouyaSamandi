@@ -9,7 +9,6 @@ use App\Providers\SuccessMessages;
 use App\Http\Requests\StoreDescriptionRequest;
 use App\Models\Description;
 use App\Models\Project;
-use App\Models\Publication;
 use App\Models\Experience;
 
 class DescriptionController extends Controller
@@ -25,10 +24,8 @@ class DescriptionController extends Controller
         $projects = Project::select('name', 'id')->get();
         // Experiences
         $experiences = Experience::select('title','id')->get();
-        // Publication
-        $publications = Publication::all();
 
-        return view('descriptionList', $vars, compact('projects','experiences','publications'));
+        return view('descriptionList', $vars, compact('projects','experiences'));
     }
 
     // DataTable

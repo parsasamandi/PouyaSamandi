@@ -86,18 +86,14 @@ class SkillDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')
             ->title('#')
-                ->addClass('column-title')
                 ->searchable(false)
                 ->orderable(false),
             Column::make('title')
-            ->title('Title')
-                ->addClass('column-title'),
+            ->title('Title'),
             Column::computed('description') // This column is not in database
-            ->title('Description')
-                ->addClass('column-title'),
+            ->title('Description'),
             Column::computed('action') // This column is not in database
             ->title('Action')
-                ->addClass('column-title')
                 ->exportable(false)
                 ->searchable(false)
                 ->printable(false)

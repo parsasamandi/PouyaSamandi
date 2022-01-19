@@ -5,7 +5,7 @@
     {{-- Breadcrumb --}}
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ url('adminHome') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active">{{ $pageName }} List</li>
+        <li class="breadcrumb-item active">{{ $pageName }} list</li>
     </ol>
 
     {{-- Button --}}

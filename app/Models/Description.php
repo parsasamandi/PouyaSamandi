@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $project_id
  * @property int $experience_id
- * @property int $publication_id
  * @property string $desc
  * @property int $size
  * @property Experience $experience

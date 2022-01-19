@@ -663,7 +663,6 @@ class ComposerStaticInit4d40ddf196fd735e240312c88d9bd1c1
         'App\\Models\\Media_text' => __DIR__ . '/../..' . '/app/Models/Media_text.php',
         'App\\Models\\Pouya' => __DIR__ . '/../..' . '/app/Models/Pouya.php',
         'App\\Models\\Project' => __DIR__ . '/../..' . '/app/Models/Project.php',
-        'App\\Models\\Publication' => __DIR__ . '/../..' . '/app/Models/Publication.php',
         'App\\Models\\Refree' => __DIR__ . '/../..' . '/app/Models/Refree.php',
         'App\\Models\\Skill' => __DIR__ . '/../..' . '/app/Models/Skill.php',
         'App\\Models\\SubProject' => __DIR__ . '/../..' . '/app/Models/SubProject.php',

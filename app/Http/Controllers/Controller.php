@@ -28,14 +28,14 @@ class Controller extends BaseController
         return $this->successfulResponse($success_output);
     }
 
-    // Get success message
-    public function getInsertionMessage() {
-        return '<div class="alert alert-success">اطلاعات با موفقیت ثبت شد</div>';
+    // Insert Message
+     public function getInsertionMessage() {
+        return '<div class="alert alert-success">The data was submitted successfully</div>';
     }
 
-    // Get update message
+    // Update Message
     public function getUpdateMessage() {
-        return '<div class="alert alert-success">اطلاعات با موفقیت ویرایش شد</div>';
+        return '<div class="alert alert-success">The data was updated successfully</div>';
     }
 
     // Json response with success

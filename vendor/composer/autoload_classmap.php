@@ -59,7 +59,6 @@ return array(
     'App\\Models\\Media_text' => $baseDir . '/app/Models/Media_text.php',
     'App\\Models\\Pouya' => $baseDir . '/app/Models/Pouya.php',
     'App\\Models\\Project' => $baseDir . '/app/Models/Project.php',
-    'App\\Models\\Publication' => $baseDir . '/app/Models/Publication.php',
     'App\\Models\\Refree' => $baseDir . '/app/Models/Refree.php',
     'App\\Models\\Skill' => $baseDir . '/app/Models/Skill.php',
     'App\\Models\\SubProject' => $baseDir . '/app/Models/SubProject.php',

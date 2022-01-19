@@ -11,6 +11,7 @@ use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
  * @property string $description
  * @property Description[] $descriptions
  */
+
 class Skill extends Model
 {
     public $timestamps = false;
@@ -30,7 +31,7 @@ class Skill extends Model
      * Cascade On Delete.
      */
     use CascadesDeletes;
-    protected $cascadeDeletes = ['description'];
+    protected $cascadeDeletes = ['descriptions'];
 
 
     /*
