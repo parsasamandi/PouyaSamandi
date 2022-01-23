@@ -96,21 +96,16 @@ class AdminDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')
             ->title('#')
-                ->addClass('column-title')
                 ->searchable(false)
                 ->orderable(false),
             Column::make('name')
-            ->title('Name')
-                ->addClass('column-title'),
+            ->title('Name'),
             Column::make('email')
-            ->title('Email')
-                ->addClass('column-title'),
+            ->title('Email'),
             Column::make('created_at')
-            ->title('Created At')
-                ->addClass('column-title'),
+            ->title('Created At'),
             Column::make('updated_at')
-            ->title('Updated At')
-                ->addClass('column-title'),
+            ->title('Updated At'),
             Column::computed('action') // This Column is not in database
                 ->addClass('column-title')
                 ->exportable(false)

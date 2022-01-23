@@ -27,20 +27,12 @@ class SkillDataTable extends DataTable
                 return $skill->title;
             })
             ->addColumn('description', function (Skill $skill) {
-                foreach($skill->descriptions as $description) {
-                    return $description->description;
+                foreach($skill->explanations as $description) {
+                    return $description->explanation;
                 }
             })
             ->addColumn('action', function (Skill $skill) {
-                return <<<ATAG
-                            <a onclick="showConfirmationModal('{$skill->id}')">
-                                <i class="fa fa-trash text-danger" aria-hidden="true"></i>
-                            </a>
-                            &nbsp;
-                            <a onclick="showEditModal('{$skill->id}')">
-                                <i class="fa fa-edit text-danger" aria-hidden="true"></i>
-                            </a>
-                        ATAG;
+                return $this->dataTable->setAction($skill->id);
             });
     }
 
@@ -92,13 +84,8 @@ class SkillDataTable extends DataTable
             ->title('Title'),
             Column::computed('description') // This column is not in database
             ->title('Description'),
-            Column::computed('action') // This column is not in database
-            ->title('Action')
-                ->exportable(false)
-                ->searchable(false)
-                ->printable(false)
-                ->orderable(false)
-                ->title('Action')
+            $this->dataTable->setActionCol('| Edit')
+            
         ];
     }
 

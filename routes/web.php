@@ -30,22 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('edit', 'ExperienceController@edit');
     Route::get('delete/{id}', 'ExperienceController@delete');
   });
-  // Education
-  Route::group(['prefix' => 'education', 'as' => 'education.'], function() {
-    Route::get('list', 'EducationController@list');
-    Route::get('table/list', 'EducationController@educationTable')->name('list.table');
-    Route::post('new', 'EducationController@store');
-    Route::get('edit', 'EducationController@edit');
-    Route::get('delete/{id}', 'EducationController@delete');
-  });
-  // Publication
-  Route::group(['prefix' => 'publication', 'as' => 'publication.'], function() {
-    Route::get('list', 'PublicationController@list');
-    Route::get('table/list', 'PublicationController@publicationTable')->name('list.table');
-    Route::post('new', 'PublicationController@store');
-    Route::get('edit', 'PublicationController@edit');
-    Route::get('delete/{id}', 'PublicationController@delete'); 
-  });
+   
   // Interest
   Route::group(['prefix' => 'interest', 'as' => 'interest.'], function() {
     Route::get('list', 'InterestController@list');
@@ -54,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('edit', 'InterestController@edit');
     Route::get('delete/{id}', 'InterestController@delete');
   });
+
   // Skill
   Route::group(['prefix' => 'skill', 'as' => 'skill.'], function() {
     Route::get('list', 'SkillController@list');
@@ -62,6 +48,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('description/store', 'SkillController@storeDescription');
     Route::get('edit', 'SkillController@edit');
     Route::get('delete/{id}', 'SkillController@delete');
+    Route::get('test', 'SkillController@test');
+  });
+
+  // Skill's description
+  Route::group(['prefix' => 'skillDescription', 'as' => 'skillDescription.'], function() {
+    Route::get('list', 'Skill\DescriptionController@list');
+    Route::get('table/list', 'Skill\DescriptionController@skillDescriptionTable')->name('list.table');
+    Route::post('store', 'Skill\DescriptionController@store');
+    Route::get('edit', 'Skill\DescriptionController@edit');
+    Route::get('delete/{id}', 'Skill\DescriptionController@delete');
   });
   // Refree
   Route::group(['prefix' => 'refree', 'as' => 'refree.'], function() {

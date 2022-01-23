@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Explanation;
 use Illuminate\Database\Eloquent\Model;
 use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
 
@@ -37,8 +38,8 @@ class Skill extends Model
     /*
      * Get all of the skill's description.
      */
-    public function descriptions() {
-        return $this->morphMany('App\Models\Description', 'description');
+    public function explanations() {
+        return $this->morphMany(Explanation::class, 'explainable');
     }
     
 }

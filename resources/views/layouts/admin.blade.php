@@ -36,12 +36,13 @@
                             {{-- CV --}}
                             <div class="sb-sidenav-menu-heading">CV</div>
 
-                            {{-- <x-admin.urlAddress text="Experience" fontAwesome="fas fa-columns" route="{{ route('experience.table') }}" />
-                            {{-- Publication list --}}
-                            {{-- <x-admin.urlAddress text="Publication" fontAwesome="fas fa-newspaper" route="{{ route('publication.table') }}" /> --}} 
                             {{-- Skill List --}}
-                            <x-admin.urlAddress text="Skill" fontAwesome="fa fa-cogs" route="{{ url('skill/list') }}" />
-                            {{-- Refree List --}}
+                            <x-admin.parentUrl text="Skill" fontAwesome="fa fa-cogs">
+                                <x-slot name="content">
+                                    <a class="nav-link" href="{{ url('skill/list') }}">List</a>
+                                    <a class="nav-link" href="{{ url('skillDescription/list') }}">Description</a>
+                                </x-slot>
+                            </x-admin.parentUrl>
 
                         </div>
                     </div>
@@ -76,7 +77,9 @@
             {{-- Ajax Requests --}}
             <script src="{{ asset('js/RequestHandler.js') }}"></script>
             
-            <script src="/js/all.min.js" crossorigin="anonymous"></script>
+            {{-- <script src="/js/all.min.js" crossorigin="anonymous"></script> --}}
+            
+            {{-- Admin js --}}
             <script src="/js/scripts.js"></script>
 
             <script>

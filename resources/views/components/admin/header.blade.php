@@ -12,12 +12,6 @@
     <button type="button" id="create_record"
         class="btn primary_color btn-sm mb-2">Add {{ $pageName }}</button>
 
-    {{-- Second Button --}}
-    @if(!empty($secondButton))
-        <button type="button" id="skill_description"
-            class="btn primary_color btn-sm mb-2">Add {{ $secondButton }}</button>
-    @endif
-
     {{-- Responsive Table --}}
     <div class="table-responsive">
         {{ $table }}

@@ -7,8 +7,8 @@ class RequestHandler {
     }
 
     // modal
-    openModal(modl = '#formModal') {
-        $(modal).modal('show');
+    openModal() {
+        $('#formModal').modal('show');
         $('#button_action').val('insert');
         $('#action').val('insert');
         $('#form_output').html('');
@@ -72,7 +72,7 @@ class RequestHandler {
     editOnSuccess(id) {
         $('#id').val(id);
         $('#button_action').val('update');
-        $('#action').val('update');
+        $('#action').val('Update');
     }
 }
 

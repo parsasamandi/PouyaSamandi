@@ -51,7 +51,7 @@ return array(
     'App\\Http\\Requests\\StoreRefreeRequest' => $baseDir . '/app/Http/Requests/StoreRefreeRequest.php',
     'App\\Http\\Requests\\StoreSkillRequest' => $baseDir . '/app/Http/Requests/StoreSkillRequest.php',
     'App\\Mail\\ContactFormMail' => $baseDir . '/app/Mail/ContactFormMail.php',
-    'App\\Models\\Description' => $baseDir . '/app/Models/Description.php',
+    'App\\Models\\Explanation' => $baseDir . '/app/Models/Explanation.php',
     'App\\Models\\Experience' => $baseDir . '/app/Models/Experience.php',
     'App\\Models\\HomeSetting' => $baseDir . '/app/Models/HomeSetting.php',
     'App\\Models\\Link' => $baseDir . '/app/Models/Link.php',

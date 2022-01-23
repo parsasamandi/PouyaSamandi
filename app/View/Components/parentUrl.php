@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class urlAddress extends Component {
+class parentUrl extends Component {
     /**
      * Get the view / contents that represent the component.
      *
@@ -12,6 +12,6 @@ class urlAddress extends Component {
      */
     public function render()
     {
-        return view('components.admin.urlAddress');
+        return view('components.admin.parentUrl');
     }
 }

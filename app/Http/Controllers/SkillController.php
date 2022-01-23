@@ -25,11 +25,11 @@ class SkillController extends Controller
 
         $vars['descriptions'] = Description::select('id', 'description')->get();
 
-        return view('skillList', $vars);
+        return view('skill.list', $vars);
     }
     // DataTable
     public function skillTable(SkillDataTable $dataTable) {
-        return $dataTable->render('skillList');
+        return $dataTable->render('skill.list');
     }
 
     // Store Skill
@@ -68,16 +68,15 @@ class SkillController extends Controller
         }
     }
 
-    // Add Or Update Skill's description
-    public function storeDescription(Request $request, SuccessMessages $message) {
-        // Insert
-        $description = new Description();
-        $description->description = $request->get('description');   
-        $description->save();
+  // Add Or Update Skill's description
+  public function storeDescription(Request $request, SuccessMessages $message) {
+    // Insert
+    $description = new Description();
+    $description->description = $request->get('description');   
+    $description->save();
 
-        return json_encode(array('success' => $this->getInsertionMessage()));
-    }
-
+    return json_encode(array('success' => $this->getInsertionMessage()));
+}
 
     // Edit
     public function edit(Action $action, Request $request) {
