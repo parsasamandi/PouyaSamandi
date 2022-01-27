@@ -655,7 +655,6 @@ class ComposerStaticInit4d40ddf196fd735e240312c88d9bd1c1
         'App\\Http\\Requests\\StoreRefreeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreRefreeRequest.php',
         'App\\Http\\Requests\\StoreSkillRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreSkillRequest.php',
         'App\\Mail\\ContactFormMail' => __DIR__ . '/../..' . '/app/Mail/ContactFormMail.php',
-        'App\\Models\\Description' => __DIR__ . '/../..' . '/app/Models/Description.php',
         'App\\Models\\Experience' => __DIR__ . '/../..' . '/app/Models/Experience.php',
         'App\\Models\\HomeSetting' => __DIR__ . '/../..' . '/app/Models/HomeSetting.php',
         'App\\Models\\Link' => __DIR__ . '/../..' . '/app/Models/Link.php',

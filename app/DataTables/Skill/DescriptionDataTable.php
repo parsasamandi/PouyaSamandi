@@ -29,8 +29,11 @@ class DescriptionDataTable extends DataTable
             ->eloquent($query)
             ->addIndexColumn()
             ->rawColumns(['action'])
-            ->addColumn('explainable_id', function (Explanation $description) {
-                return $description->explainable->title;
+            ->addColumn('explainable_id', function (Explanation $explanation) {
+                return optional($explanation->explainable)->title;
+            })
+            ->filterColumn('explainable_id', function ($query, $keyword) {
+                return $this->dataTable->filterCommentCol($query, $keyword);
             })
             ->addColumn('action', function (Explanation $description) {
                 return $this->dataTable->setAction($description->id);

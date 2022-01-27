@@ -10,7 +10,7 @@
             </div>
             <div class="modal-footer" align="center">
                 <button type="button" id="deleteSubmission" class="btn btn-danger">Confirm</button>
-                <button type="button" class="btn btn-opaque" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn primary_color" data-dismiss="modal">Cancel</button>
                 <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}" />
             </div>
         </div>

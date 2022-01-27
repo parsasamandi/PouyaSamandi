@@ -1,19 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreSkillRequest;
 use App\Providers\Action;
-use App\Providers\SuccessMessages;
 use App\DataTables\SkillDataTable;
-use App\Models\Description;
-use App\Models\Experience;
+use App\Models\Explanation;
 use App\Models\Skill;
+use DB;
 
 class SkillController extends Controller
 {
+
+    public $action;
+
+    public function __construct() {
+        $this->action = new Action();
+    }
+
     public $skill = '\App\Models\Skill';
 
     // Skill Table
@@ -23,7 +29,7 @@ class SkillController extends Controller
 
         $vars['skillTable'] = $dataTable->html();
 
-        $vars['descriptions'] = Description::select('id', 'description')->get();
+        $vars['descriptions'] = Explanation::select('id', 'explanation')->get();
 
         return view('skill.list', $vars);
     }
@@ -33,28 +39,34 @@ class SkillController extends Controller
     }
 
     // Store Skill
-    public function store(StoreSkillRequest $request, SuccessMessages $message) {
+    public function store(StoreSkillRequest $request) {
 
         // Insert
         if($request->get('button_action') == "insert") {
+
             $this->addSkill($request);
+
             $success_output = $this->getInsertionMessage();
         }
         // Update
         else if($request->get('button_action') == "update") {
+
             $this->addSkill($request);
+
             $success_output = $this->getUpdateMessage();
         }
 
-        return json_encode(array('message' => $success_output));
+        return $this->getAction($request->get('button_action'));
     }
 
     // Add Or Update Skill
     public function addSkill($request) {
 
-        foreach($request->get('descriptions') as $description) {
+        DB::transaction(function() use($request) {
+
             // Edit
             $skill = Skill::find($request->get('id'));
+
             if(!$skill) {
                 // Insert
                 $skill = new Skill();
@@ -63,27 +75,25 @@ class SkillController extends Controller
             $skill->title = $request->get('title');
             $skill->save();
 
-            // Skill's descriptions
-            $skill->descriptions()->create(['description' => $description]);
-        }
+            if($request->get('descriptions') != null) {
+
+                foreach($request->get('descriptions') as $description) {
+                    // Skill's descriptions
+                    $skill->explanations()->create(['explanation' => $description]);
+                }
+            }
+            
+        });
+
     }
-
-  // Add Or Update Skill's description
-  public function storeDescription(Request $request, SuccessMessages $message) {
-    // Insert
-    $description = new Description();
-    $description->description = $request->get('description');   
-    $description->save();
-
-    return json_encode(array('success' => $this->getInsertionMessage()));
-}
 
     // Edit
-    public function edit(Action $action, Request $request) {
-        return Skill::where('id', $request->get('id'))->with('descriptions')->first();
+    public function edit(Request $request) {
+        return $this->action->edit($this->skill, $request->get('id'));
     }
+
     // Delete
-    public function delete(Action $action,$id) {
-        return $action->delete($this->skill, $id);
+    public function delete($id) {
+        return $this->action->delete($this->skill, $id);
     }
 }

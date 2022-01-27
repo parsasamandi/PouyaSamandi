@@ -14,10 +14,12 @@
     <x-admin.insert size="modal-l" formId="skillDescriptionForm">
         <x-slot name="content">
             <div class="row">
-                {{-- Title --}}
                 <div class="col-md-12">
-                    <label for="title">Title:</label>
-                    <input id="title" name="title" Placeholder="Title" type="text" class="form-control mb-3">
+                    {{-- Description --}}
+                    <label for="Description">Description:</label>
+
+                    <textarea rows="7" type="text" id="description" name="description" placeholder="Description"
+                                class="form-control mt-1"></textarea>
                 </div>
             </div>
         </x-slot>
@@ -63,10 +65,10 @@
             function edit($id) {
 
                 // Clean dropbox
-                action.cleanDropbox('#descriptions');
+                // action.cleanDropbox('#descriptions');
 
                 action.reloadModal();
-
+                
                 $.ajax({
                     url: "{{ url('skillDescription/edit') }}",
                     method: "get",
@@ -75,7 +77,9 @@
                     },
                     success: function(data) {
                         action.editOnSuccess($id);
-                        $('#title').val(data.title);
+                        $('#description').val(data.explanation);
+                        $('select[name="description"]').val(data.course_id).trigger('change');
+
                         // values = '';
                         // for(var all of data.descriptions) {
                         //     values += all.description + ' ';

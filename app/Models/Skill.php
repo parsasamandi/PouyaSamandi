@@ -32,7 +32,7 @@ class Skill extends Model
      * Cascade On Delete.
      */
     use CascadesDeletes;
-    protected $cascadeDeletes = ['descriptions'];
+    protected $cascadeDeletes = ['explanations'];
 
 
     /*

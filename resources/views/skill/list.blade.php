@@ -22,7 +22,7 @@
                     <label for="descriptions">Description:</label>
                     <select id="descriptions" name="descriptions[]" class="custom-select" multiple>
                         @foreach ($descriptions as $description)
-                            <option value="{{ $description->description }}">{{ $description->description }}</option>
+                            <option value="{{ $description->explanation }}">{{ $description->explanation }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -70,9 +70,9 @@
             }
 
             function edit($id) {
-                action.reloadModal();
-                // Clean dropbox
-                action.cleanDropbox('#descriptions');
+                // action.reloadModal();
+                // // Clean dropbox
+                // action.cleanDropbox('#descriptions');
                 
                 $.ajax({
                     url: "{{ url('skill/edit') }}",
@@ -83,6 +83,7 @@
                     success: function(data) {
                         action.editOnSuccess($id);
                         $('#title').val(data.title);
+                        $('select[name="#descriptions"]').val(data.explanations.eplanation).trigger('change');
                     }
                 })
             }

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property string $description
- * @property string $describable_type
- * @property int $describable_id
+ * @property string $explanation
+ * @property string $explanation_type
+ * @property int $explanation_id
  */
 class Explanation extends Model
 {
@@ -23,7 +23,7 @@ class Explanation extends Model
     /**
      * @var array
      */
-    protected $fillable = ['description', 'description_type', 'description_id'];
+    protected $fillable = ['explanation', 'explanation_type', 'explanation_id'];
 
 
     /**

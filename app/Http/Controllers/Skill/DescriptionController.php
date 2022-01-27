@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Skill;
 use Illuminate\Http\Request;
 use App\Models\Explanation;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreDescriptionRequest;
 use App\DataTables\Skill\DescriptionDataTable;
 use App\Providers\Action;
 use DB;
@@ -35,52 +36,34 @@ class DescriptionController extends Controller
 
     
     // Store
-    public function store(StoreCommentRequest $request) {
+    public function store(StoreDescriptionRequest $request) {
 
-        DB::transaction(function() use($request) {
+        Explanation::updateOrCreate(
+            ['id' => $request->get('id')],
+            ['explanation' => $request->get('description')]
+        );
 
-            $comment = Comment::create(['name' => $request->get('name'), 'comment' => $request->get('comment'), 
-                'commentable_id' => $request->get('course_id'), 'commentable_type' => Course::class]);
+        // Insert
+        if($request->get('button_action') == "insert") {
+            $success_output = $this->getInsertionMessage();
+        }
 
-            // Set the course's comment inactive
-            $comment->statuses()->create(['status' => Status::INACTIVE]);
+        // Update
+        else if($request->get('button_action') == "update") {
+            $success_output = $this->getUpdateMessage();
+        }
 
-        });
-
-        return $this->successfulResponse('دیدگاه مرتبط با دوره با موفقیت ثبت شد');
+        return $this->getAction($request->get('button_action'));
     }
 
     // Edit
     public function edit(Request $request) {
-        $this->action->edit(Comment::class, $request->get('id')); 
-    }
-
-    // Update
-    public function update(StoreCommentRequest $request) {
-
-        $comment = Comment::where('id', $request->get('id'))->where('commentable_type', Course::class)
-            ->update(['comment' => $request->get('comment')]);
-
-        return $this->successfulResponse('دیدگاه مرتبط با دوره با موفقیت ویرایش شد');
+        return $this->action->edit(Explanation::class, $request->get('id')); 
     }
 
     // Delete
     public function delete($id) {
         return $this->action->delete(Explanation::class, $id);
-    }
-
-    // Comment submitted by admin to be shown for user
-    public function submit(Request $request, CourseArticleAction $action) {
-        // Set the course's comment visible
-        return $action->comment($request->get('submission'));
-    }
-
-    // Details
-    public function details(Request $request) {
-
-        $vars['comment'] = Comment::find($request->get('id'));
-
-        return view('course.comment.details', $vars);
     }
 
 }

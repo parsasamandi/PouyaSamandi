@@ -152,9 +152,9 @@
                     </div>
                     <ul class="fa-ul mb-0 justify-center">
                         <li>
-                            @foreach ($skill->descriptions as $description)
+                            @foreach ($skill->explanations as $description)
                                 {{-- <span class="fa-li"><i class="fas fa-check"></i></span> --}}
-                                <p>  {{ $skill->description }} </p>
+                                <p>  {{ $description->description }} </p>
                             @endforeach
                         </li>
                     </ul>

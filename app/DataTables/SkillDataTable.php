@@ -11,6 +11,12 @@ use Yajra\DataTables\Services\DataTable;
 
 class SkillDataTable extends DataTable
 {
+
+    public $dataTable;
+
+    public function __construct() {
+        $this->dataTable = new GeneralDataTable();
+    }
     /**
      * Build DataTable class.
      *
@@ -85,7 +91,6 @@ class SkillDataTable extends DataTable
             Column::computed('description') // This column is not in database
             ->title('Description'),
             $this->dataTable->setActionCol('| Edit')
-            
         ];
     }
 

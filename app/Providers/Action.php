@@ -14,12 +14,12 @@ class Action {
     /**
      * Edit
      * 
-     * @return json_encode
+     * @return json
      */
-    public function edit($model,$id) {
+    public function edit($model, $id) {
         try {
             $values = $model::find($id);
-            return json_encode($values);
+            return response()->json($values);
         } catch (Throwable $e) {
             return response()->json($e);
         }
@@ -28,7 +28,7 @@ class Action {
     /**
      * Delete
      * 
-     * @return json_encode
+     * @return json
      */
     public function delete($model,$id) {
         try {

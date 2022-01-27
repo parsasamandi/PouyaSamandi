@@ -10,7 +10,7 @@ class RequestHandler {
     openModal() {
         $('#formModal').modal('show');
         $('#button_action').val('insert');
-        $('#action').val('insert');
+        $('#action').val('Insert');
         $('#form_output').html('');
         $(window.formId)[0].reset();
     }
