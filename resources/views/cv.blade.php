@@ -150,11 +150,10 @@
                     <div class="subheading mb-3">
                         {{ $skill->title ?? null }}
                     </div>
-                    <ul class="fa-ul mb-0 justify-center">
+                    <ul id="skillMargin" class="fa-ul justify-center">
                         <li>
                             @foreach ($skill->explanations as $description)
-                                {{-- <span class="fa-li"><i class="fas fa-check"></i></span> --}}
-                                <p>  {{ $description->description }} </p>
+                                <p>  {{ $description->explanation }} </p>
                             @endforeach
                         </li>
                     </ul>

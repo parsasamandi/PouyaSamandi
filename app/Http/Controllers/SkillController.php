@@ -89,7 +89,9 @@ class SkillController extends Controller
 
     // Edit
     public function edit(Request $request) {
-        return $this->action->edit($this->skill, $request->get('id'));
+
+        $skill = Skill::where('id', $request->get('id'))->with('explanations')->first();
+        return response()->json($skill);
     }
 
     // Delete

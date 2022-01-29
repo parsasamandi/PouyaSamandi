@@ -17,7 +17,7 @@ mix.setResourceRoot('../');
  */
 
 // Cv And Project
-mix.styles('resources/assets/sass/_cvProj.scss','public/css/cvProj.css')
+mix.styles('resources/assets/sass/_cvProject.scss','public/css/cvProj.css')
     // Authentication
     .styles('resources/assets/sass/_auth.scss','public/css/auth.css')
     // Admin Style

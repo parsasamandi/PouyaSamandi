@@ -70,7 +70,8 @@
             }
 
             function edit($id) {
-                // action.reloadModal();
+                
+                action.reloadModal();
                 // // Clean dropbox
                 // action.cleanDropbox('#descriptions');
                 
@@ -83,7 +84,7 @@
                     success: function(data) {
                         action.editOnSuccess($id);
                         $('#title').val(data.title);
-                        $('select[name="#descriptions"]').val(data.explanations.eplanation).trigger('change');
+                        $('select[name="#descriptions"]').val(data.explanations.explanation).trigger('change');
                     }
                 })
             }
