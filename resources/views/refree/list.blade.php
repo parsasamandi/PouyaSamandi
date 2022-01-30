@@ -4,21 +4,19 @@
 @section('content')
 
     {{-- Header --}}
-    <x-admin.header pageName="Experience">
+    <x-admin.header pageName="Refree">
         <x-slot name="table">
-            {!! $experienceTable->table(['class' => 'table table-striped table-bordered table-hover-responsive w-100 nowrap text-center']) !!}
+            <x-table :table="$refreeTable" />
         </x-slot>
     </x-admin.header>
 
     {{-- Insert Modal --}}
-    <x-admin.insert size="modal-lg" formId="experienceForm">
+    <x-admin.insert size="modal-xl" formId="refreeForm">
         <x-slot name="content">
+
             <div class="row">
-                {{-- Title --}}
-                <div class="col-md-6 mb-3">
-                    <label for="title">Title</label>
-                    <input id="title" name="title" type="text" class="form-control" placeholder="Title">
-                </div>
+                {{-- Name --}}
+                <x-input key="name" name="Name" class="col-md-6 mb-3" />
                 {{-- Image --}}
                 <div class="col-md-6">
                     <input id="image" name="image" type="file">

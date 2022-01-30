@@ -31,7 +31,7 @@
                             </h4>
                             <hr>
                             <p>
-                                
+
                             </p>
                         </div>
                     </div>
@@ -71,9 +71,6 @@
                         <p class="mt-2">
                             Iran University of Science and Technology is one of the best universities of Iran based on
                             international rankings such as QS,
-                            and Times Higher Education.
-                            Iran University of Science and Technology is one of the best universities of Iran based on US
-                            news,QS,
                             and Times Higher Education.
                         </p>
                     </div>
@@ -153,43 +150,11 @@
                     <ul id="skillMargin" class="fa-ul justify-center">
                         <li>
                             @foreach ($skill->explanations as $description)
-                                <p>  {{ $description->explanation }} </p>
+                                <p> {{ $description->explanation }} </p>
                             @endforeach
                         </li>
                     </ul>
                 @endforeach
-            </div>
-        </section>
-        <hr class="m-0" />
-
-        <!-- Skills-->
-        <section class="resume-section" id="skills">
-            <div class="resume-section-content">
-                <h3 class="mb-3">
-                    <i class="fa fa-cogs"></i>
-                    Skills
-                </h3>
-                <div class="subheading mb-3 text-danger">
-                    Programming Languages and Tools
-                </div>
-                <p class="justify-center">
-                    • Computer: Solidworks, Matlab, Python, Adamas, Mathematica and C++.
-                    <br>
-                    • Microcontrollers: AVR and Arduino (open source electronic platform).
-                    <br>
-                    • Lots of successful experiences in team-working.
-                </p>
-                <div class="subheading mb-3 text-danger">languages</div>
-                <ul class="fa-ul mb-0 justify-center">
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Persian (native) English (fluent) Arabic ( familiar).
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        TOEFL score: 98 out of 120 (R:24, L:28, S:24, W: 22).
-                    </li>
-                </ul>
             </div>
         </section>
         <hr class="m-0" />

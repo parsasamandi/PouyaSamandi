@@ -15,9 +15,7 @@
         <x-slot name="content">
             <div class="row">
                 {{-- Title --}}
-                <div class="col-md-12">
-                    <label for="title">Title:</label>
-                    <input id="title" name="title" Placeholder="Title" type="text" class="form-control mb-3">
+                <x-input key="name" name="Name" class="col-md-12" />
 
                     <label for="descriptions">Description:</label>
                     <select id="descriptions" name="descriptions[]" class="custom-select" multiple>
@@ -25,7 +23,6 @@
                             <option value="{{ $description->explanation }}">{{ $description->explanation }}</option>
                         @endforeach
                     </select>
-                </div>
             </div>
         </x-slot>
     </x-admin.insert>

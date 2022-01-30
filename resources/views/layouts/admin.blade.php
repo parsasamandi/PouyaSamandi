@@ -44,6 +44,14 @@
                                 </x-slot>
                             </x-admin.parentUrl>
 
+                            {{-- Refree List --}}
+                            <x-admin.parentUrl text="Refree" fontAwesome="fas fa-chalkboard-teacher">
+                                <x-slot name="content">
+                                    <a class="nav-link" href="{{ url('refree/list') }}">List</a>
+                                    <a class="nav-link" href="{{ url('refreeDescription/list') }}">Description</a>
+                                </x-slot>
+                            </x-admin.parentUrl>
+
                         </div>
                     </div>
                 </nav>

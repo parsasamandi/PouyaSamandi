@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -9,7 +10,6 @@ use App\Http\Requests\StoreRefreeRequest;
 use App\Providers\SuccessMessages;
 use App\DataTables\RefreeDataTable;
 use App\Models\Refree;
-use App\Models\Experience;
 use File;
 
 class RefreeController extends Controller
@@ -21,7 +21,7 @@ class RefreeController extends Controller
 
         $vars['refreeTable'] = $dataTable->html();
 
-        return view('refreeList', $vars);
+        return view('refree.list', $vars);
     }
 
     // DataTable
@@ -30,7 +30,7 @@ class RefreeController extends Controller
     }
     
     // Store Refree
-    public function store(StoreRefreeRequest $request,SuccessMessages $success) {
+    public function store(StoreRefreeRequest $request) {
         // Insert
         if($request->get('button_action') == "insert") {
             $this->addRefree($request);
