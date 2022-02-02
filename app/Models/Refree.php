@@ -20,7 +20,7 @@ class Refree extends Model
     /*
      * Get all of the refree's description.
      */
-    public function explanation() {
+    public function explanations() {
         return $this->morphOne(Explanation::class, 'explainable');
     }
 

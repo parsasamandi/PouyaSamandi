@@ -5,18 +5,15 @@ namespace App\DataTables;
 use App\Models\Skill;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
-
 class SkillDataTable extends DataTable
 {
-
     public $dataTable;
 
     public function __construct() {
         $this->dataTable = new GeneralDataTable();
     }
+
     /**
      * Build DataTable class.
      *
@@ -36,6 +33,11 @@ class SkillDataTable extends DataTable
                 foreach($skill->explanations as $description) {
                     return $description->explanation;
                 }
+            })
+            ->filterColumn('explanation', function($query, $keyword) {
+                
+                return $this->dataTable->filterColumn($query, 
+                    'id in (select explanation_id from explanations where explanation like ?)', $keyword);
             })
             ->addColumn('action', function (Skill $skill) {
                 return $this->dataTable->setAction($skill->id);
@@ -60,18 +62,8 @@ class SkillDataTable extends DataTable
      */
     public function html()
     {
-        return $this->builder()
-            ->setTableId('skillTable')
-            ->columns($this->getColumns())
-            ->minifiedAjax(route('skill.list.table'))
-            ->dom('Bfrtip')
-            ->searching(true)
-            ->info(false)
-            ->ordering(true)
-            ->responsive(true)
-            ->pageLength(6)
-            ->dom('PBCfrtip')
-            ->orderBy(1);
+        return $this->dataTable->tableSetting($this->builder(), 
+                $this->getColumns(), 'skill');
     }
 
     /**
@@ -92,15 +84,5 @@ class SkillDataTable extends DataTable
             ->title('Description'),
             $this->dataTable->setActionCol('| Edit')
         ];
-    }
-
-    /**
-     * Get filename for export.
-     *
-     * @return string
-     */
-    protected function filename()
-    {
-        return 'Skill_' . date('YmdHis');
     }
 }

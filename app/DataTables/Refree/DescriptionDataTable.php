@@ -1,8 +1,8 @@
 <?php
 
-namespace App\DataTables\Skill;
+namespace App\DataTables\Refree;
 
-use App\Models\Skill;
+use App\Models\Refree;
 use App\Models\Explanation;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -33,7 +33,7 @@ class DescriptionDataTable extends DataTable
                 return optional($explanation->explainable)->title;
             })
             ->filterColumn('explainable_id', function ($query, $keyword) {
-                return $this->dataTable->filterDescriptioncCol($query, $keyword);
+                return $this->dataTable->filterCommentCol($query, $keyword);
             })
             ->addColumn('action', function (Explanation $description) {
                 return $this->dataTable->setAction($description->id);
@@ -59,7 +59,7 @@ class DescriptionDataTable extends DataTable
     public function html()
     {
         return $this->dataTable->tableSetting($this->builder(), 
-                $this->getColumns(), 'skillDescription');
+                $this->getColumns(), 'refreeDescription');
     }
 
     /**

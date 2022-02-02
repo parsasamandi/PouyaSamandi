@@ -6,8 +6,6 @@ use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
-use Yajra\DataTables\Html\Editor\Fields;
-use Yajra\DataTables\Html\Editor\Editor;
 use Illuminate\Support\Facades\URL;
 
 
@@ -35,18 +33,6 @@ class AdminDataTable extends DataTable
                                 <i class="fa fa-edit text-danger" aria-hidden="true"></i>
                             </a>
                         ATAG;
-            })
-            ->editColumn('name', function (User $user){
-                return $user->name;
-            })
-            ->editColumn('email', function(User $user){
-                return $user->email;
-            })
-            ->editColumn('created_at', function(User $user){
-                return $user->created_at;
-            })
-            ->editColumn('updated_at', function(User $user){
-                return $user->updated_at;
             });
     }
 

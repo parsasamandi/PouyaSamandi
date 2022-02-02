@@ -5,12 +5,17 @@ namespace App\DataTables;
 use App\Models\Refree;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use \Illuminate\Support\Str;
 
 class RefreeDataTable extends DataTable
 {
+    public $dataTable;
+
+    public function __construct() {
+        $this->dataTable = new GeneralDataTable();
+    }
+    
     /**
      * Build DataTable class.
      *
@@ -23,13 +28,20 @@ class RefreeDataTable extends DataTable
             ->eloquent($query)
             ->rawColumns(['action'])
             ->addIndexColumn()
-            ->addColumn('image', function (Refree $refree) {
+            ->editColumn('image', function (Refree $refree) {
                 return "<img src=/images/". $refree->image ." height='auto' width='60%' />";
             })
-            ->addColumn('link', function (Refree $refree) {
+            ->editColumn('link', function (Refree $refree) {
                 return <<<ATAG
                             <a href="$refree->link">Open the link</a>
                         ATAG;
+            })
+            ->addColumn('description', function (Refree $refree) {
+                return Str::limit(optional($refree->explanations)->explanation, 80, '(details)');
+            })
+            ->filterColumn('description', function($query, $keyword) {
+                return $this->dataTable->filterColumn($query, 
+                    'id in (select explanation_id from explanations where explanation like ?)', $keyword);
             })
             ->addColumn('action', function (Refree $refree) {
                 return $this->dataTable->setAction($refree->id);
@@ -54,17 +66,8 @@ class RefreeDataTable extends DataTable
      */
     public function html()
     {
-        return $this->builder()
-            ->setTableId('refreeTable')
-            ->minifiedAjax(route('refree.list.table'))
-            ->columns($this->getColumns())
-            ->searching(true)
-            ->info(false)
-            ->ordering(true)
-            ->responsive(true)
-            ->pageLength(6)
-            ->dom('PBCfrtip')
-            ->orderBy(1);
+        return $this->dataTable->tableSetting($this->builder(), 
+                $this->getColumns(), 'refree');
     }
 
     /**
@@ -76,37 +79,18 @@ class RefreeDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')
-            ->title('#')
-                ->addClass('column-title')
+            ->title('#')                                       
                 ->searchable(false)
                 ->orderable(false),
             Column::make('name')
-            ->title('Name')
-                ->addClass('column-title'),
+            ->title('Name'),
             Column::make('image')
-            ->title('Image')
-                ->addClass('column-title'),
+            ->title('Image'),
             Column::make('link')
-            ->title('Link')
-                ->addClass('column-title'),
-            Column::computed('action') // This column is not in database
-            ->title('Action')
-                ->addClass('column-title')
-                ->exportable(false)
-                ->searchable(false)
-                ->printable(false)
-                ->orderable(false)
-                ->title('Action')
+            ->title('Link'),
+            Column::computed('description')
+            ->title('Description'),
+            $this->dataTable->setActionCol('| Edit')
         ];
-    }
-
-    /**
-     * Get filename for export.
-     *
-     * @return string
-     */
-    protected function filename()
-    {
-        return 'Refree_' . date('YmdHis');
     }
 }

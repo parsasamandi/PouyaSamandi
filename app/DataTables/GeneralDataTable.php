@@ -154,10 +154,10 @@ class GeneralDataTable
     }
 
     // Filter comment column
-    public function filterCommentCol($query, $keyword) {
+    public function filterDescriptioncCol($query, $keyword) {
         
         return $this->filterColumn($query, 
-                        'id in (select commaentble_id from comments where comment like ? )', $keyword);
+                        'id in (select explainable_id from explanations where explanation like ? )', $keyword);
     }
 
     // Filter column

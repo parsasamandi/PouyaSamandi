@@ -15,8 +15,10 @@
         <x-slot name="content">
 
             <div class="row">
+                
                 {{-- Name --}}
                 <x-input key="name" name="Name" class="col-md-6 mb-3" />
+
                 {{-- Image --}}
                 <div class="col-md-6">
                     <input id="image" name="image" type="file">
@@ -27,99 +29,60 @@
     </x-admin.insert>
 
     {{-- Delete Modal --}}
-    <x-admin.delete title="Do you confirm to delete experience?" />
+    <x-admin.delete title="refree" />
 
 @endsection
 
 {{-- Scripts --}}
 @section('scripts')
     @parent
-    {{-- Experience Table --}}
-    {!! $experienceTable->scripts() !!}
+    {{-- Refree Table --}}
+    {!! $refreeTable->scripts() !!}
 
     <script>
         $(document).ready(function() {
-            // Experience Table
-            let dt = window.LaravelDataTables['experienceTable'];
-            // Record Modal
-            $('#create_record').click(function() {
-                $('#formModal').modal('show');
-                $('#experienceForm')[0].reset();
-                $('#form_output').html('');
-            });
-            // Create a new one
-            $('#experienceForm').on('submit', function(event) {
-                event.preventDefault();
-                var form_data = new FormData(this);
-                form_data.append('file', form_data)
-                $.ajax({
-                    url: "{{ route('experience.store') }}",
-                    method: "POST",
-                    data: form_data,
-                    processing: true,
-                    dataType: "json",
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-                        if (data.error.length > 0) {
-                            var error_html = '';
-                            for (var count = 0; count < data.error.length; count++) {
-                                error_html += '<div class="alert alert-danger">' + data.error[
-                                    count] + '</div>';
-                            }
-                            $('#form_output').html(error_html);
-                        } else {
-                            $('#form_output').html(data.success);
-                            $('#experienceForm')[0].reset();
-                            $('#button_action').val('insert');
-                            dt.draw(false);
-                        }
-                    }
-                })
-            });
-            // Edit
-            window.showEditModal = function showEditModal(url) {
-                editExperience(url);
-            }
+            
+            // Refree DataTable And Action Object
+            let dt = window.LaravelDataTables['skillTable'];
+            let action = new RequestHandler(dt, '#skillForm', 'skill');
 
-            function editExperience($url) {
-                var id = $url;
-                $('#formModal').modal('show');
-                $('#form_output').html('');
-                $.ajax({
-                    url: "{{ route('experience.edit') }}",
-                    method: "get",
-                    data: {
-                        id: id
-                    },
-                    dataType: "json",
-                    success: function(data) {
-                        $('#id').val(id);
-                        $('#button_action').val('update');
-                        $('#title').val(data.title);
-                    }
-                })
-            }
+            // Record modal
+            $('#create_record').click(function() {
+                action.cleanDropbox('#descriptions');
+                action.openModal();
+            });
+
+            // Insert
+            action.insert();
+
             // Delete
             window.showConfirmationModal = function showConfirmationModal(url) {
-                deleteDescription(url);
+                action.delete(url);
             }
 
-            function deleteDescription($url) {
-                var id = $url;
-                $('#confirmModal').modal('show');
-                $('#ok_button').click(function() {
-                    $.ajax({
-                        url: "/experience/delete/" + id,
-                        method: "get",
-                        dataType: "json",
-                        success: function(data) {
-                            $('#confirmModal').modal('hide');
-                            dt.draw(false);
-                        }
-                    })
-                });
+            // Edit
+            window.showEditModal = function showEditModal(id) {
+                edit(id);
+            }
+
+            function edit($id) {
+                
+                action.reloadModal();
+                // // Clean dropbox
+                action.cleanDropbox('#descriptions');
+                
+                $.ajax({
+                    url: "{{ url('refree/edit') }}",
+                    method: "get",
+                    data: {
+                        id: $id
+                    },
+                    success: function(data) {
+                        action.editOnSuccess($id);
+                        $('#title').val(data.title);
+                        $('select[name="#descriptions"]').val(data.explanation.explanation).trigger('change');
+                    }
+                })
             }
         });
     </script>

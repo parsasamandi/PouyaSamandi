@@ -1,17 +1,17 @@
 @extends('layouts.admin')
-@section('title', "The list of descriptions of skills")
+@section('title', 'the list of descriptions of refres')
 
 @section('content')
 
     {{-- Header --}}
-    <x-admin.header pageName="Skill description">
+    <x-admin.header pageName="Refree description">
         <x-slot name="table">
-            <x-table :table="$skillDescriptionTable" />
+            <x-table :table="$refreeDescriptionTable" />
         </x-slot>
     </x-admin.header>
 
     {{-- Insert Modal --}}
-    <x-admin.insert size="modal-l" formId="skillDescriptionForm">
+    <x-admin.insert size="modal-l" formId="refreeDescriptionForm">
         <x-slot name="content">
             <div class="row">
                 <div class="col-md-12">
@@ -25,7 +25,7 @@
     </x-admin.insert>
 
     {{-- Delete Modal --}}
-    <x-admin.delete title="skill's description" />
+    <x-admin.delete title="refree's description" />
 
 @endsection
 
@@ -33,15 +33,15 @@
 @section('scripts')
 
     @parent
-    {{-- Skill Table --}}
-    {!! $skillDescriptionTable->scripts() !!}
+    {{-- Refree Table --}}
+    {!! $refreeDescriptionTable->scripts() !!}
 
     <script>
         $(document).ready(function() {
             
             // Admin DataTable And Action Object
-            let dt = window.LaravelDataTables['skillDescriptionTable'];
-            let action = new RequestHandler(dt, '#skillDescriptionForm', 'skillDescription');
+            let dt = window.LaravelDataTables['refreeDescriptionTable'];
+            let action = new RequestHandler(dt, '#refreeDescriptionForm', 'refreeDescription');
 
             // Record modal
             $('#create_record').click(function() {
@@ -69,7 +69,7 @@
                 action.reloadModal();
                 
                 $.ajax({
-                    url: "{{ url('skillDescription/edit') }}",
+                    url: "{{ url('refreeDescription/edit') }}",
                     method: "get",
                     data: {
                         id: $id
@@ -77,6 +77,7 @@
                     success: function(data) {
                         action.editOnSuccess($id);
                         $('#description').val(data.explanation);
+                        $('select[name="description"]').val(data.course_id).trigger('change');
                     }
                 })
             }
@@ -84,3 +85,4 @@
     </script>
 
 @endsection
+

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Skill list')
+@section('title', "The list of skills")
 
 @section('content')
 
@@ -17,12 +17,14 @@
                 {{-- Title --}}
                 <x-input key="name" name="Name" class="col-md-12" />
 
+                <div class="col-md-12">
                     <label for="descriptions">Description:</label>
                     <select id="descriptions" name="descriptions[]" class="custom-select" multiple>
                         @foreach ($descriptions as $description)
                             <option value="{{ $description->explanation }}">{{ $description->explanation }}</option>
                         @endforeach
                     </select>
+                </div>
             </div>
         </x-slot>
     </x-admin.insert>
@@ -69,8 +71,8 @@
             function edit($id) {
                 
                 action.reloadModal();
-                // // Clean dropbox
-                // action.cleanDropbox('#descriptions');
+                // Clean dropbox
+                action.cleanDropbox('#descriptions');
                 
                 $.ajax({
                     url: "{{ url('skill/edit') }}",
@@ -82,6 +84,14 @@
                         action.editOnSuccess($id);
                         $('#title').val(data.title);
                         $('select[name="#descriptions"]').val(data.explanations.explanation).trigger('change');
+
+                        // values = '';
+                        // for(var all of data.descriptions) {
+                        //     values += all.description + ' ';
+                        // };
+                        // $.each(values.split(" "), function(i,e){
+                        //     $("#descriptions option[value='" + e + "']").prop("selected", true);
+                        // });
                     }
                 })
             }

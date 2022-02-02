@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Skill;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreSkillRequest;
 use App\Providers\Action;
 use App\DataTables\SkillDataTable;
@@ -13,7 +13,6 @@ use DB;
 
 class SkillController extends Controller
 {
-
     public $action;
 
     public function __construct() {
@@ -33,6 +32,7 @@ class SkillController extends Controller
 
         return view('skill.list', $vars);
     }
+
     // DataTable
     public function skillTable(SkillDataTable $dataTable) {
         return $dataTable->render('skill.list');
@@ -58,40 +58,34 @@ class SkillController extends Controller
 
         return $this->getAction($request->get('button_action'));
     }
+    
 
     // Add Or Update Skill
     public function addSkill($request) {
 
         DB::transaction(function() use($request) {
 
-            // Edit
-            $skill = Skill::find($request->get('id'));
+            $id = $request->get('id');
 
-            if(!$skill) {
-                // Insert
-                $skill = new Skill();
-            }
+            $skill = Skill::updateOrCreate(
+                ['id' => $id],
+                ['title' => $request->get('title')]
+            );
 
-            $skill->title = $request->get('title');
-            $skill->save();
-
-            if($request->get('descriptions') != null) {
+            if($request->has('descriptions')) {
 
                 foreach($request->get('descriptions') as $description) {
                     // Skill's descriptions
-                    $skill->explanations()->create(['explanation' => $description]);
+                    $skill->explanations()->updateOrCreate(['id', $id, 'explanation' => $description]);
                 }
             }
-            
         });
 
     }
 
     // Edit
     public function edit(Request $request) {
-
-        $skill = Skill::where('id', $request->get('id'))->with('explanations')->first();
-        return response()->json($skill);
+        return $this->action->editWithDescription($this->skill, $request->get('id'));
     }
 
     // Delete
