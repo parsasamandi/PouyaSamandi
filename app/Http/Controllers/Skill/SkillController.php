@@ -28,7 +28,7 @@ class SkillController extends Controller
 
         $vars['skillTable'] = $dataTable->html();
 
-        $vars['descriptions'] = Explanation::select('id', 'explanation')->get();
+        $vars['descriptions'] = Explanation::select('id', 'explanation')->where('explainable_type', Skill::class)->get();
 
         return view('skill.list', $vars);
     }
@@ -40,28 +40,6 @@ class SkillController extends Controller
 
     // Store Skill
     public function store(StoreSkillRequest $request) {
-
-        // Insert
-        if($request->get('button_action') == "insert") {
-
-            $this->addSkill($request);
-
-            $success_output = $this->getInsertionMessage();
-        }
-        // Update
-        else if($request->get('button_action') == "update") {
-
-            $this->addSkill($request);
-
-            $success_output = $this->getUpdateMessage();
-        }
-
-        return $this->getAction($request->get('button_action'));
-    }
-    
-
-    // Add Or Update Skill
-    public function addSkill($request) {
 
         DB::transaction(function() use($request) {
 
@@ -76,13 +54,14 @@ class SkillController extends Controller
 
                 foreach($request->get('descriptions') as $description) {
                     // Skill's descriptions
-                    $skill->explanations()->updateOrCreate(['id', $id, 'explanation' => $description]);
+                    $skill->explanations()->updateOrCreate(['explainable_id' => $id, 'explanation' => $description]);
                 }
             }
         });
 
+        return $this->getAction($request->get('button_action'));
     }
-
+    
     // Edit
     public function edit(Request $request) {
         return $this->action->editWithDescription($this->skill, $request->get('id'));

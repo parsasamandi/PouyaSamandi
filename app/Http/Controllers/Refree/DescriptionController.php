@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Refree;
 
 use Illuminate\Http\Request;
 use App\Models\Explanation;
+use App\Models\Refree;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDescriptionRequest;
 use App\DataTables\Refree\DescriptionDataTable;
@@ -29,9 +30,9 @@ class DescriptionController extends Controller
         return view('refree.descriptionlist', $vars);
     }
 
-    // Get course comment
-    public function skillDescriptionTable(DescriptionDataTable $dataTable) {
-        return $dataTable->render('skill.descriptionList');
+    // Get refree's comment
+    public function refreeDescriptionTable(DescriptionDataTable $dataTable) {
+        return $dataTable->render('refree.descriptionList');
     }
 
     
@@ -40,24 +41,15 @@ class DescriptionController extends Controller
 
         Explanation::updateOrCreate(
             ['id' => $request->get('id')],
-            ['explanation' => $request->get('description')]
+            ['explanation' => $request->get('description'), 'explainable_type' => Refree::class]
         );
-
-        // Insert
-        if($request->get('button_action') == "insert") {
-            $success_output = $this->getInsertionMessage();
-        }
-
-        // Update
-        else if($request->get('button_action') == "update") {
-            $success_output = $this->getUpdateMessage();
-        }
-
+        
         return $this->getAction($request->get('button_action'));
     }
 
     // Edit
     public function edit(Request $request) {
+
         return $this->action->edit(Explanation::class, $request->get('id')); 
     }
 

@@ -48,7 +48,7 @@ class DescriptionDataTable extends DataTable
      */
     public function query(Explanation $model)
     {
-        return $model->newQuery();
+        return $model::where('explainable_type', Skill::class);
     }
 
     /**
@@ -71,10 +71,7 @@ class DescriptionDataTable extends DataTable
     {
 
         return [
-            Column::make('DT_RowIndex') // connect to 226 line columns
-            ->title('#')
-                ->searchable(false)
-                ->orderable(false),
+            $this->dataTable->getIndexCol(),
             Column::make('explanation')
             ->title('Description'),
             Column::make('explainable_id')

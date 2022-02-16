@@ -40,18 +40,8 @@ class DescriptionController extends Controller
 
         Explanation::updateOrCreate(
             ['id' => $request->get('id')],
-            ['explanation' => $request->get('description')]
+            ['explanation' => $request->get('description'), 'explainable_type' => Skill::class]
         );
-
-        // Insert
-        if($request->get('button_action') == "insert") {
-            $success_output = $this->getInsertionMessage();
-        }
-
-        // Update
-        else if($request->get('button_action') == "update") {
-            $success_output = $this->getUpdateMessage();
-        }
 
         return $this->getAction($request->get('button_action'));
     }

@@ -57,7 +57,7 @@ class LoginController extends Controller
             // Authentication passed...
             return redirect()->intended('/adminHome');
         }
-        return back()->with('faliure', 'Your email or password is incorrect.please try again');
+        return back()->with('faliure', 'Your email or password is incorrect. please try again');
     }
     
 }

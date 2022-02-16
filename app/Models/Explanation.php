@@ -20,10 +20,11 @@ class Explanation extends Model
     protected $table = 'explanations';
 
     public $timestamps = false;
+    
     /**
      * @var array
      */
-    protected $fillable = ['explanation', 'explanation_type', 'explanation_id'];
+    protected $fillable = ['explanation', 'explainable_type', 'explainable_id'];
 
 
     /**

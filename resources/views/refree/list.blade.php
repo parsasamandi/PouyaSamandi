@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Experience List')
+@section('title', 'The list of refrees')
 
 @section('content')
 
@@ -11,20 +11,18 @@
     </x-admin.header>
 
     {{-- Insert Modal --}}
-    <x-admin.insert size="modal-xl" formId="refreeForm">
+    <x-admin.insert size="modal-l" formId="refreeForm">
         <x-slot name="content">
-
             <div class="row">
-                
                 {{-- Name --}}
-                <x-input key="name" name="Name" class="col-md-6 mb-3" />
-
-                {{-- Image --}}
-                <div class="col-md-6">
-                    <input id="image" name="image" type="file">
-                </div>
+                <x-input key="name" name="Name" class="col-md-12 mb-3" />
+                {{-- Image link --}}
+                <x-input type="file" key="image" name="Image" class="col-md-12 mb-3" />
+                {{-- Link info --}}
+                <x-input key="link" name="Information link" class="col-md-12 mb-3" />
+                {{-- Description --}}
+                @include('includes.description', ['name' => 'descriptions'])
             </div>
-
         </x-slot>
     </x-admin.insert>
 
@@ -43,8 +41,8 @@
         $(document).ready(function() {
             
             // Refree DataTable And Action Object
-            let dt = window.LaravelDataTables['skillTable'];
-            let action = new RequestHandler(dt, '#skillForm', 'skill');
+            let dt = window.LaravelDataTables['refreeTable'];
+            let action = new RequestHandler(dt, '#refreeForm', 'refree');
 
             // Record modal
             $('#create_record').click(function() {
@@ -68,7 +66,7 @@
             function edit($id) {
                 
                 action.reloadModal();
-                // // Clean dropbox
+                // Clean dropbox
                 action.cleanDropbox('#descriptions');
                 
                 $.ajax({
@@ -79,8 +77,9 @@
                     },
                     success: function(data) {
                         action.editOnSuccess($id);
-                        $('#title').val(data.title);
-                        $('select[name="#descriptions"]').val(data.explanation.explanation).trigger('change');
+                        $('#name').val(data.name);
+                        // console.log(data.explanations.explainable_id);
+                        $('select[name="descriptions"]').val(data.explanations.explanation).trigger('change');
                     }
                 })
             }

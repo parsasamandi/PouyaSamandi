@@ -29,7 +29,7 @@ class Action {
     // Edit with status
     public function editWithDescription($model,$id) {
 
-        $values = $model::where('id', $id)->with('explanations:explanation_id,explanation')->first();
+        $values = $model::where('id', $id)->with('explanations:explainable_id,explanation')->first();
 
         return response()->json($values);
     }

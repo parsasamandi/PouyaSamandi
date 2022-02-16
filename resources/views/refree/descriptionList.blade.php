@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'the list of descriptions of refres')
+@section('title', 'The list of descriptions of refres')
 
 @section('content')
 
@@ -62,10 +62,7 @@
             }
 
             function edit($id) {
-
-                // Clean dropbox
-                // action.cleanDropbox('#descriptions');
-
+                
                 action.reloadModal();
                 
                 $.ajax({

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\DataTables;
+namespace App\DataTables\Refree;
 
 use App\Models\Refree;
-use Yajra\DataTables\Html\Button;
+use Yajra\DataTables\Html\Button; 
 use Yajra\DataTables\Html\Column;
+use App\Datatables\GeneralDataTable;
 use Yajra\DataTables\Services\DataTable;
 use \Illuminate\Support\Str;
 
@@ -26,22 +27,19 @@ class RefreeDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'link', 'image'])
             ->addIndexColumn()
             ->editColumn('image', function (Refree $refree) {
                 return "<img src=/images/". $refree->image ." height='auto' width='60%' />";
             })
             ->editColumn('link', function (Refree $refree) {
-                return <<<ATAG
-                            <a href="$refree->link">Open the link</a>
-                        ATAG;
+                return "<a href='$refree->link'>Link address</a>";
             })
             ->addColumn('description', function (Refree $refree) {
-                return Str::limit(optional($refree->explanations)->explanation, 80, '(details)');
+                return Str::limit(optional($refree->explanations)->explanation, 80, ' (details)');
             })
             ->filterColumn('description', function($query, $keyword) {
-                return $this->dataTable->filterColumn($query, 
-                    'id in (select explanation_id from explanations where explanation like ?)', $keyword);
+                return $this->dataTable->filterDescriptioncCol($query, $keyword);
             })
             ->addColumn('action', function (Refree $refree) {
                 return $this->dataTable->setAction($refree->id);
@@ -78,10 +76,7 @@ class RefreeDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('DT_RowIndex')
-            ->title('#')                                       
-                ->searchable(false)
-                ->orderable(false),
+            $this->dataTable->getIndexCol(),
             Column::make('name')
             ->title('Name'),
             Column::make('image')

@@ -54,7 +54,7 @@ class GeneralDataTable
                 ->searchable(false)
                 ->orderable(false);
     }   
-
+    
     /**
      * Get action column.
      */

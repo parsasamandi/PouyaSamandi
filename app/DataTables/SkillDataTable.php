@@ -74,10 +74,7 @@ class SkillDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('DT_RowIndex')
-            ->title('#')
-                ->searchable(false)
-                ->orderable(false),
+            $this->dataTable->getIndexCol(),
             Column::make('title')
             ->title('Title'),
             Column::computed('description') // This column is not in database

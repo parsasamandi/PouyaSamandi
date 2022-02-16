@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -12,10 +13,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Refree extends Model
 {
+    public $timestamps = false;
+
     /**
      * @var array
      */
     protected $fillable = ['name', 'link', 'image'];
+
+    /**
+     * Cascade On Delete.
+     */
+    use CascadesDeletes;
+    protected $cascadeDeletes = ['explanations'];
 
     /*
      * Get all of the refree's description.

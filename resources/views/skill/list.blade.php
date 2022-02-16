@@ -15,16 +15,9 @@
         <x-slot name="content">
             <div class="row">
                 {{-- Title --}}
-                <x-input key="name" name="Name" class="col-md-12" />
+                <x-input key="title" name="Title" class="col-md-12 mb-2" />
 
-                <div class="col-md-12">
-                    <label for="descriptions">Description:</label>
-                    <select id="descriptions" name="descriptions[]" class="custom-select" multiple>
-                        @foreach ($descriptions as $description)
-                            <option value="{{ $description->explanation }}">{{ $description->explanation }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                @include('includes.description', ['multiple' => 'multipe'])
             </div>
         </x-slot>
     </x-admin.insert>
@@ -83,7 +76,8 @@
                     success: function(data) {
                         action.editOnSuccess($id);
                         $('#title').val(data.title);
-                        $('select[name="#descriptions"]').val(data.explanations.explanation).trigger('change');
+                        console.log($('select[name="descriptions[]"]').val());
+                        $('select[name="descriptions[]"]').val(data.explanations.explanation).trigger('change');
 
                         // values = '';
                         // for(var all of data.descriptions) {

@@ -30,10 +30,10 @@ class DescriptionDataTable extends DataTable
             ->addIndexColumn()
             ->rawColumns(['action'])
             ->addColumn('explainable_id', function (Explanation $explanation) {
-                return optional($explanation->explainable)->title;
+                return optional($explanation->explainable)->name;
             })
             ->filterColumn('explainable_id', function ($query, $keyword) {
-                return $this->dataTable->filterCommentCol($query, $keyword);
+                return $this->dataTable->filterDescriptioncCol($query, $keyword);
             })
             ->addColumn('action', function (Explanation $description) {
                 return $this->dataTable->setAction($description->id);
@@ -48,7 +48,8 @@ class DescriptionDataTable extends DataTable
      */
     public function query(Explanation $model)
     {
-        return $model->newQuery();
+        return $model::where('explainable_type', Refree::class);
+        
     }
 
     /**
@@ -71,14 +72,11 @@ class DescriptionDataTable extends DataTable
     {
 
         return [
-            Column::make('DT_RowIndex') // connect to 226 line columns
-            ->title('#')
-                ->searchable(false)
-                ->orderable(false),
+            $this->dataTable->getIndexCol(),
             Column::make('explanation')
             ->title('Description'),
             Column::make('explainable_id')
-            ->title('Skill title'),
+            ->title("Refree's name"),
             $this->dataTable->setActionCol('| Edit')
         ];
     }

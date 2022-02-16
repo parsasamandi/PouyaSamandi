@@ -173,9 +173,9 @@
                                 </h4>
                                 <br>
                                 <p>
-                                    {{ $refree->desc }}
+                                    {{ optional($refree->explanations)->explanation }}
                                     {{-- Refree link --}}
-                                    <a href="{{ $refree->link }}">
+                                    For more information, click on <a href="{{ $refree->link }}">
                                         {{-- Regree Name For Link --}}
                                         {{ $refree->name }}
                                     </a>

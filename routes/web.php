@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,11 +67,11 @@ Route::group(['middleware' => 'auth'], function () {
 
   // Refree
   Route::group(['prefix' => 'refree', 'as' => 'refree.'], function () {
-    Route::get('list', 'Refree\Controller@list');
-    Route::get('table/list', 'Refree\Controller@refreeTable')->name('list.table');
-    Route::post('new', 'Refree\Controller@store');
-    Route::get('edit', 'Refree\Controller@edit');
-    Route::get('delete/{id}', 'Refree\Controller@delete');
+    Route::get('list', 'Refree\RefreeController@list');
+    Route::get('table/list', 'Refree\RefreeController@refreeTable')->name('list.table');
+    Route::post('store', 'Refree\RefreeController@store');
+    Route::get('edit', 'Refree\RefreeController@edit');
+    Route::get('delete/{id}', 'Refree\RefreeController@delete');
   });
 
   // Refree's description
@@ -77,10 +79,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('list', 'Refree\DescriptionController@list');
     Route::get('table/list', 'Refree\DescriptionController@refreeDescriptionTable')
       ->name('list.table');
-    Route::post('new', 'Refree\DescriptionController@store');
+    Route::post('store', 'Refree\DescriptionController@store');
     Route::get('edit', 'Refree\DescriptionController@edit');
     Route::get('delete/{id}', 'Refree\DescriptionController@delete');
   });
+
   // Admin
   Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('list', 'AdminController@list')->name('table');
@@ -148,4 +151,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('editProjectTitle/{id}', 'ProjectTitleController@update');
     Route::delete('projectTitleList/{id}', 'ProjectTitleController@destroy');
   });
+  
 });
