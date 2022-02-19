@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property string $title
- * @property string $image
- * @property Description[] $descriptions
+ * @property Explanation[] $explanations
  */
+
+
 class Experience extends Model
 {
     public $timestamps = false;
@@ -18,18 +19,17 @@ class Experience extends Model
      * 
      * @var string
      */
-    protected $table = 'experience';
+    protected $table = 'experiences';
 
     /**
      * @var array
      */
-    protected $fillable = ['title', 'image'];
+    protected $fillable = ['headline'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     /*
+     * Get all of experience's description.
      */
-    public function descriptions()
-    {
-        return $this->hasMany('App\Models\Description');
+    public function explanations() {
+        return $this->morphMany(Explanation::class, 'explainable');
     }
 }

@@ -15,15 +15,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/cv', 'pouyaController@indexCv');
 Route::get('/project', 'ProjectController@index');
-Route::get('/login/login', ['as' => 'login.login', 'uses' => 'Auth\LoginController@index']);
+Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@index']);
 Route::post('/post-login', 'Auth\LoginController@store');
 Route::get('/', 'GeneralController@index');
 Route::post('/', 'pouyaController@storeEmail');
 
 Route::group(['middleware' => 'auth'], function () {
+
+  // Admin
+  Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('list', 'AdminController@list')->name('table');
+    Route::get('table/list', 'AdminController@adminTable');
+    Route::post('new', 'AdminController@store');
+    Route::get('edit', 'AdminController@edit');
+    Route::get('delete/{id}', 'AdminController@delete');
+  });
+
   // Admin Page
   Route::get('/admin/home', 'AdminController@adminHome');
   Route::get('/logout', 'AdminController@logout');
+
   // Experience
   Route::group(['prefix' => 'experience', 'as' => 'experience.'], function () {
     Route::get('list', 'ExperienceController@list');
@@ -84,14 +95,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('delete/{id}', 'Refree\DescriptionController@delete');
   });
 
-  // Admin
-  Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::get('list', 'AdminController@list')->name('table');
-    Route::get('table/list', 'AdminController@adminTable');
-    Route::post('new', 'AdminController@store');
-    Route::get('edit', 'AdminController@edit');
-    Route::get('delete/{id}', 'AdminController@delete');
-  });
   // Setting
   Route::prefix('setting')->group(function () {
     Route::get('homeSetting', 'SettingController@index');
@@ -104,14 +107,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('new', 'ProjectController@store')->name('store');
     Route::get('edit', 'ProjectController@edit')->name('edit');
     Route::get('/delete/{id}', 'ProjectController@delete');
-  });
-  // Description
-  Route::group(['prefix' => 'description', 'as' => 'description.'], function () {
-    Route::get('list', 'DescriptionController@list')->name('table');
-    Route::get('list/table', 'DescriptionController@descriptionTable')->name('list.table');
-    Route::post('new', 'DescriptionController@store')->name('store');
-    Route::get('edit', 'DescriptionController@edit')->name('edit');
-    Route::get('/delete/{id}', 'DescriptionController@delete');
   });
 
   Route::prefix('media')->group(function () {

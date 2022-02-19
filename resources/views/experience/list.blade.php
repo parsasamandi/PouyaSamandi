@@ -1,48 +1,46 @@
 @extends('layouts.admin')
-@section('title', 'The list of refrees')
+@section('title', "The list of skills")
 
 @section('content')
 
     {{-- Header --}}
-    <x-admin.header pageName="Refree">
+    <x-admin.header pageName="Experience">
         <x-slot name="table">
-            <x-table :table="$refreeTable" />
+            <x-table :table="$experienceTable" />
         </x-slot>
     </x-admin.header>
 
     {{-- Insert Modal --}}
-    <x-admin.insert size="modal-l" formId="refreeForm">
+    <x-admin.insert size="modal-l" formId="experienceForm">
         <x-slot name="content">
             <div class="row">
-                {{-- Name --}}
-                <x-input key="name" name="Name" class="col-md-12 mb-3" />
-                {{-- Image link --}}
-                <x-input type="file" key="image" name="Image" class="col-md-12 mb-3" />
-                {{-- Link info --}}
-                <x-input key="link" name="Information link" class="col-md-12 mb-3" />
-                {{-- Description --}}
-                @include('includes.description', ['name' => 'descriptions'])
+                {{-- Title --}}
+                <x-input key="title" name="Title" class="col-md-12 mb-2" />
+
+                @include('includes.description', ['multiple' => 'multipe'])
             </div>
         </x-slot>
     </x-admin.insert>
 
     {{-- Delete Modal --}}
-    <x-admin.delete title="refree" />
+    <x-admin.delete title="skill" />
+
 
 @endsection
 
 {{-- Scripts --}}
 @section('scripts')
+
     @parent
-    {{-- Refree Table --}}
-    {!! $refreeTable->scripts() !!}
+    {{-- Skill Table --}}
+    {!! $skillTable->scripts() !!}
 
     <script>
         $(document).ready(function() {
             
-            // Refree DataTable And Action object
-            let dt = window.LaravelDataTables['refreeTable'];
-            let action = new RequestHandler(dt, '#refreeForm', 'refree');
+            // Admin DataTable And Action Object
+            let dt = window.LaravelDataTables['skillTable'];
+            let action = new RequestHandler(dt, '#skillForm', 'skill');
 
             // Record modal
             $('#create_record').click(function() {
@@ -70,19 +68,28 @@
                 action.cleanDropbox('#descriptions');
                 
                 $.ajax({
-                    url: "{{ url('refree/edit') }}",
+                    url: "{{ url('skill/edit') }}",
                     method: "get",
                     data: {
                         id: $id
                     },
                     success: function(data) {
                         action.editOnSuccess($id);
-                        $('#name').val(data.name);
-                        $('#link').val(data.link);
-                        $('select[name="descriptions"]').val(data.explanations.explanation).trigger('change');
+                        $('#title').val(data.title);
+                        console.log($('select[name="descriptions[]"]').val());
+                        $('select[name="descriptions[]"]').val(data.explanations.explanation).trigger('change');
+
+                        // values = '';
+                        // for(var all of data.descriptions) {
+                        //     values += all.description + ' ';
+                        // };
+                        // $.each(values.split(" "), function(i,e){
+                        //     $("#descriptions option[value='" + e + "']").prop("selected", true);
+                        // });
                     }
                 })
             }
         });
     </script>
+
 @endsection
