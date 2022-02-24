@@ -1,19 +1,22 @@
 <?php
 
-namespace App\DataTables\Skill;
+namespace App\DataTables\Experience;
 
-use App\Models\Skill;
+use App\Models\Refree;
+use App\Models\Explanation;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
+use App\Datatables\GeneralDataTable;
 use Yajra\DataTables\Services\DataTable;
-class SkillDataTable extends DataTable
+
+class DescriptionDataTable extends DataTable
 {
+
     public $dataTable;
 
     public function __construct() {
         $this->dataTable = new GeneralDataTable();
     }
-
     /**
      * Build DataTable class.
      *
@@ -26,44 +29,38 @@ class SkillDataTable extends DataTable
             ->eloquent($query)
             ->addIndexColumn()
             ->rawColumns(['action'])
-            ->editColumn('title', function (Skill $skill) {
-                return $skill->title;
+            ->addColumn('explainable_id', function (Explanation $explanation) {
+                return optional($explanation->explainable)->headline;
             })
-            ->addColumn('description', function (Skill $skill) {
-                foreach($skill->explanations as $description) {
-                    return $description->explanation;
-                }
+            ->filterColumn('explainable_id', function ($query, $keyword) {
+                return $this->dataTable->filterDescriptioncCol($query, $keyword);
             })
-            ->filterColumn('explanation', function($query, $keyword) {
-                
-                return $this->dataTable->filterColumn($query, 
-                    'id in (select explanation_id from explanations where explanation like ?)', $keyword);
-            })
-            ->addColumn('action', function (Skill $skill) {
-                return $this->dataTable->setAction($skill->id);
+            ->addColumn('action', function (Explanation $description) {
+                return $this->dataTable->setAction($description->id);
             });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Skill $model
+     * @param \App\Models\Explanation $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Skill $model)
+    public function query(Explanation $model)
     {
-        return $model->newQuery();
+       //  return $model::where('explainable_type', Experience::class);
+       return $model::where('explainable_type', Experience::class);        
     }
 
     /**
      * Optional method if you want to use html builder.
      *
-     * @return \Yajra\DataTables\Html\Builder
+    * @return \Yajra\DataTables\Html\Builder
      */
     public function html()
     {
         return $this->dataTable->tableSetting($this->builder(), 
-                $this->getColumns(), 'skill');
+                $this->getColumns(), 'experienceDescription');
     }
 
     /**
@@ -73,13 +70,15 @@ class SkillDataTable extends DataTable
      */
     protected function getColumns()
     {
+
         return [
             $this->dataTable->getIndexCol(),
-            Column::make('title')
-            ->title('Title'),
-            Column::computed('description') // This column is not in database
+            Column::make('explanation')
             ->title('Description'),
+            Column::make('explainable_id')
+            ->title("Refree's name"),
             $this->dataTable->setActionCol('| Edit')
         ];
     }
+
 }

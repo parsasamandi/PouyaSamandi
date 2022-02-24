@@ -32,7 +32,7 @@ class RefreeController extends Controller
 
         $vars['refreeTable'] = $dataTable->html();
 
-        $vars['descriptions'] = Explanation::select('id', 'explanation')->where('explainable_type', Refree::class)->get();
+        $vars['descriptions'] = $this->action->getDescription();
 
         return view('refree.list', $vars);
     }

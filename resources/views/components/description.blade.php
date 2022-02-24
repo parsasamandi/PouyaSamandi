@@ -1,3 +1,4 @@
+{{-- Description --}}
 <div class="{{ $class ?? 'col-md-12' }}">
 
     <label for="descriptions">Description:</label>

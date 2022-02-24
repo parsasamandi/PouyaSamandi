@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Symfony\Component\HttpFoundation\Response;
-use App\Models\Media;
+use App\Models\Explanation;
 use File;
 
 class Action {
@@ -14,16 +14,14 @@ class Action {
      */
 
     // Edit
-    public function edit($model,$id) {
-        try{
-            $values = $model::find($id);
+    public function edit($model, $id) {
 
-            return $values ? response()->json($values) 
-                : $this->failedResponse();
+        $values = $model::find($id);
 
-        } catch(Throwable $error) {
-            return response()->json($error);
-        }
+        return $values ? response()->json($values) 
+            : $this->failedResponse();
+
+        return $this->successfulResponse();
     }
 
     // Edit with status
@@ -59,33 +57,11 @@ class Action {
         }
         return $this->successfulResponse();
     }
-    
-    // Add Image
-    // public function image($imageUploader, $request, $media_id, $type) {
-    //     // Update
-    //     if(!$imageUploader) {
-    //         // Insert
-    //         $imageUploader = new Media();
-    //     }
-    //     $imageUploader->media_id = $media_id;
-    //     $imageUploader->media_type = $type;
-    //     // 0 = image
-    //     $imageUploader->type = Media::IMAGE;
 
-    //     foreach($request->file('images') as $image) {
-    //         // File
-    //         $file = $image->getClientOriginalName();
+    public function getDescription($model) {
 
-    //         if(isset($file)) {
-    //             // Delete the old picture
-    //             File::delete(public_path("images/$imageUploader->url")); 
-
-    //             $image->move(public_path('images'), $file);
-    //             $imageUploader->url = $file;
-    //         }
-    //     }
-    //     $imageUploader->save();
-    // }
+        return Explanation::select('id', 'explanation')->where('explainable_type', $model)->get();
+    }
 
     // Response with error
     public function failedResponse() {

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSkillRequest;
 use App\Providers\Action;
-use App\DataTables\SkillDataTable;
+use App\DataTables\Skill\SkillDataTable;
 use App\Models\Explanation;
 use App\Models\Skill;
 use DB;

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "The list of skills")
+@section('title', "The list of experiences")
 
 @section('content')
 
@@ -15,7 +15,7 @@
         <x-slot name="content">
             <div class="row">
                 {{-- Title --}}
-                <x-input key="title" name="Title" class="col-md-12 mb-2" />
+                <x-input key="headline" name="Headline" class="col-md-12 mb-2" />
 
                 @include('includes.description', ['multiple' => 'multipe'])
             </div>
@@ -33,7 +33,7 @@
 
     @parent
     {{-- Skill Table --}}
-    {!! $skillTable->scripts() !!}
+    {!! $experienceTable->scripts() !!}
 
     <script>
         $(document).ready(function() {

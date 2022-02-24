@@ -40,7 +40,7 @@
                         <div class="sb-sidenav-menu-heading">Admin</div>
 
                         {{-- Admin --}}
-                        <x-admin.parentUrl text="Admin" fontAwesome="fa fa-cogs">
+                        <x-admin.parentUrl text="Admin" fontAwesome="fa fa-user">
                             <x-slot name="content">
                             </x-slot>
                         </x-admin.parentUrl>
@@ -71,12 +71,12 @@
                         </x-admin.parentUrl>
 
                         {{-- Experiences --}}
-                        <x-admin.parentUrl text="Experience" fontAwesome="fas fa-chalkboard-teacher">
+                        <x-admin.parentUrl text="Experience" fontAwesome="fa fa-history">
                             <x-slot name="content">
                                 {{-- List --}}
-                                <x-admin.parentUrlItem name="List" url="refree\list" fontAwesome="fas fa-list" />
+                                <x-admin.parentUrlItem name="List" url="experience\list" fontAwesome="fas fa-list" />
                                 {{-- Description --}}
-                                <x-admin.parentUrlItem name="Description" url="refreeDescription\list"
+                                <x-admin.parentUrlItem name="Description" url="experienceDescription\list"
                                     fontAwesome="fa fa-info-circle" />
                             </x-slot>
                         </x-admin.parentUrl>

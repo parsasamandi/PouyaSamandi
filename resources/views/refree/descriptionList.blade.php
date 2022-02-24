@@ -14,12 +14,7 @@
     <x-admin.insert size="modal-l" formId="refreeDescriptionForm">
         <x-slot name="content">
             <div class="row">
-                <div class="col-md-12">
-                    {{-- Description --}}
-                    <label for="Description">Description:</label>
-                    <textarea rows="7" type="text" id="description" name="description" placeholder="Description"
-                                class="form-control mt-1"></textarea>
-                </div>
+                <x-textarea key="description" placeholder="Description" class="col-md-12" />
             </div>
         </x-slot>
     </x-admin.insert>

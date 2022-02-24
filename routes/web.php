@@ -37,22 +37,22 @@ Route::group(['middleware' => 'auth'], function () {
 
   // Experience
   Route::group(['prefix' => 'experience', 'as' => 'experience.'], function () {
-    Route::get('list', 'ExperienceController@list');
-    Route::get('table/list', 'ExperienceController@experienceTable')
+    Route::get('list', 'Experience\ExperienceController@list');
+    Route::get('table/list', 'Experience\ExperienceController@experienceTable')
       ->name('list.table');
-    Route::post('new', 'ExperienceController@store');
-    Route::get('edit', 'ExperienceController@edit');
-    Route::get('delete/{id}', 'ExperienceController@delete');
+    Route::post('store', 'Experience\ExperienceController@store');
+    Route::get('edit', 'Experience\ExperienceController@edit');
+    Route::get('delete/{id}', 'Experience\ExperienceController@delete');
   });
 
-  // Interest
-  Route::group(['prefix' => 'interest', 'as' => 'interest.'], function () {
-    Route::get('list', 'InterestController@list');
-    Route::get('table/list', 'InterestController@interestTable')
+  // Experience's description
+  Route::group(['prefix' => 'experienceDescription', 'as' => 'experienceDescription.'], function () {
+    Route::get('list', 'Experience\DescriptionController@list');
+    Route::get('table/list', 'Experience\DescriptionController@experienceDescriptionTable')
       ->name('list.table');
-    Route::post('new', 'interestController@store');
-    Route::get('edit', 'InterestController@edit');
-    Route::get('delete/{id}', 'InterestController@delete');
+    Route::post('store', 'Experience\DescriptionController@store');
+    Route::get('edit', 'Experience\DescriptionController@edit');
+    Route::get('delete/{id}', 'Experience\DescriptionController@delete');
   });
 
   // Skill
@@ -146,5 +146,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('editProjectTitle/{id}', 'ProjectTitleController@update');
     Route::delete('projectTitleList/{id}', 'ProjectTitleController@destroy');
   });
-  
 });

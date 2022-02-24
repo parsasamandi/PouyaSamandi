@@ -1,26 +1,27 @@
 @extends('layouts.admin')
-@section('title', "The list of descriptions of skills")
+@section('title', 'The list of descriptions of experiences')
 
 @section('content')
 
     {{-- Header --}}
-    <x-admin.header pageName="Skill description">
+    <x-admin.header pageName="Experience description">
         <x-slot name="table">
-            <x-table :table="$skillDescriptionTable" />
+            <x-table :table="$experienceDescriptionTable" />
         </x-slot>
     </x-admin.header>
 
     {{-- Insert Modal --}}
-    <x-admin.insert size="modal-l" formId="skillDescriptionForm">
+    <x-admin.insert size="modal-l" formId="experienceDescriptionForm">
         <x-slot name="content">
             <div class="row">
-                <x-textarea key="description" placeholder="Description" class="col-md-12" />
+                {{-- Description --}}
+                <x-textarea key="description" placeholder="Description" rows="7" class="col-md-12" />
             </div>
         </x-slot>
     </x-admin.insert>
 
     {{-- Delete Modal --}}
-    <x-admin.delete title="skill's description" />
+    <x-admin.delete title="experience's description" />
 
 @endsection
 
@@ -28,15 +29,15 @@
 @section('scripts')
 
     @parent
-    {{-- Skill Table --}}
-    {!! $skillDescriptionTable->scripts() !!}
+    {{-- Experience description Table --}}
+    {!! $experienceDescriptionTable->scripts() !!}
 
     <script>
         $(document).ready(function() {
-            
+
             // Admin DataTable And Action Object
-            let dt = window.LaravelDataTables['skillDescriptionTable'];
-            let action = new RequestHandler(dt, '#skillDescriptionForm', 'skillDescription');
+            let dt = window.LaravelDataTables['experienceDescriptionTable'];
+            let action = new RequestHandler(dt, '#experienceDescriptionForm', 'experienceDescription');
 
             // Record modal
             $('#create_record').click(function() {
@@ -58,13 +59,10 @@
 
             function edit($id) {
 
-                // Clean dropbox
-                // action.cleanDropbox('#descriptions');
-
                 action.reloadModal();
-                
+
                 $.ajax({
-                    url: "{{ url('skillDescription/edit') }}",
+                    url: "{{ url('experienceDescription/edit') }}",
                     method: "get",
                     data: {
                         id: $id

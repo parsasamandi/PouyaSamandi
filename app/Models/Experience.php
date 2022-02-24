@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
 
 /**
  * @property int $id
@@ -25,6 +26,12 @@ class Experience extends Model
      * @var array
      */
     protected $fillable = ['headline'];
+
+    /**
+     * Cascade On Delete.
+     */
+    use CascadesDeletes;
+    protected $cascadeDeletes = ['explanations'];
 
      /*
      * Get all of experience's description.
