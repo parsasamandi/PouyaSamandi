@@ -25,14 +25,16 @@
                 @foreach ($experiences as $experience)
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
                         <div class="flex-grow-1">
-                            <h4 class="mb-0 text-danger">
-                                <img src="/images/{{ $experience->image }}" />
-                                {{ $experience->title }}
+                            <h4 class="mb-0 text-primary">
+                                {{-- <img src="/images/{{ $experience->image }}" /> --}}
+                                {{ $experience->headline }}
                             </h4>
                             <hr>
-                            <p>
-
-                            </p>
+                            @foreach($experience->explanations as $description)
+                                <p>
+                                    {{ $description->explanation }}
+                                </p>
+                            @endforeach
                         </div>
                     </div>
                 @endforeach
@@ -90,7 +92,7 @@
                 <!-- style="background-color:rgb(250, 207, 207); padding:20px" -->
                 <div class="d-flex flex-column flex-md-row justify-content-between">
                     <div class="flex-grow-1">
-                        <h4 class="text-danger mb-3">
+                        <h4 class="mb-3">
                             <a href="http://www.iust.ac.ir/">
                                 Publications and Conference
                                 Presentations
@@ -109,7 +111,7 @@
         <!-- Interests-->
         <section class="resume-section resume-section-bg" id="interests">
             <div class="resume-section-content">
-                <h4 class="test-danger"><i class="fa fa-thumbs-up"></i> Fields Of Interests</h4>
+                <h4><i class="fa fa-thumbs-up"></i> Fields Of Interests</h4>
                 <div class="row">
                     <div class="col-md-4">
                         <img style="margin-top:3.5em" class="interestField_image" src="images/robatic_arm.jpg" />

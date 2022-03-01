@@ -165,8 +165,7 @@ class GeneralDataTable
         return $query->whereRaw($sql, ["%{$keyword}%"]);
     }
 
-    //  Jalali timestamps
-    public function showJalaliTime($timestamps) {
-        return Jalalian::forge($timestamps);
+    public function getDescription($model) {
+
     }
 }

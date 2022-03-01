@@ -17,13 +17,13 @@
                 {{-- Title --}}
                 <x-input key="headline" name="Headline" class="col-md-12 mb-2" />
 
-                @include('includes.description', ['multiple' => 'multipe'])
+                @include('includes.description', ['multiple' => 'multiple'])
             </div>
         </x-slot>
     </x-admin.insert>
 
     {{-- Delete Modal --}}
-    <x-admin.delete title="skill" />
+    <x-admin.delete title="experience" />
 
 
 @endsection
@@ -32,15 +32,15 @@
 @section('scripts')
 
     @parent
-    {{-- Skill Table --}}
+    {{-- Experience Table --}}
     {!! $experienceTable->scripts() !!}
 
     <script>
         $(document).ready(function() {
             
             // Admin DataTable And Action Object
-            let dt = window.LaravelDataTables['skillTable'];
-            let action = new RequestHandler(dt, '#skillForm', 'skill');
+            let dt = window.LaravelDataTables['experienceTable'];
+            let action = new RequestHandler(dt, '#experienceForm', 'experience');
 
             // Record modal
             $('#create_record').click(function() {
@@ -68,24 +68,15 @@
                 action.cleanDropbox('#descriptions');
                 
                 $.ajax({
-                    url: "{{ url('skill/edit') }}",
+                    url: "{{ url('experience/edit') }}",
                     method: "get",
                     data: {
                         id: $id
                     },
                     success: function(data) {
                         action.editOnSuccess($id);
-                        $('#title').val(data.title);
-                        console.log($('select[name="descriptions[]"]').val());
+                        $('#headline').val(data.headline);
                         $('select[name="descriptions[]"]').val(data.explanations.explanation).trigger('change');
-
-                        // values = '';
-                        // for(var all of data.descriptions) {
-                        //     values += all.description + ' ';
-                        // };
-                        // $.each(values.split(" "), function(i,e){
-                        //     $("#descriptions option[value='" + e + "']").prop("selected", true);
-                        // });
                     }
                 })
             }

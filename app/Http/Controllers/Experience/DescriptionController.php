@@ -52,7 +52,7 @@ class DescriptionController extends Controller
     // Edit
     public function edit(Request $request)
     {
-        return $this->action->editWithDescription(Explanation::class, $request->get('id'));
+        return $this->action->edit(Explanation::class, $request->get('id'));
     }
 
     // Delete

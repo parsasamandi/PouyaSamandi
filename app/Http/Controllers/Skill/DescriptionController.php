@@ -7,6 +7,7 @@ use App\Models\Explanation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDescriptionRequest;
 use App\DataTables\Skill\DescriptionDataTable;
+use App\Models\Skill;
 use App\Providers\Action;
 use DB;
 

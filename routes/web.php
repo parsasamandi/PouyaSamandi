@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/cv', 'pouyaController@indexCv');
+Route::get('/cv', 'CvController@show');
 Route::get('/project', 'ProjectController@index');
 Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@index']);
 Route::post('/post-login', 'Auth\LoginController@store');

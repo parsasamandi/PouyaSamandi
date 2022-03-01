@@ -81,7 +81,7 @@ class AdminController extends Controller
         return json_encode($admin);
     }
 
-    // AdminHome
+    // Show
     public function adminHome() {
         return view('adminHome');
     }

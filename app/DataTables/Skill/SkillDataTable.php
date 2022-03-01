@@ -5,6 +5,7 @@ namespace App\DataTables\Skill;
 use App\Models\Skill;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
+use App\Datatables\GeneralDataTable;
 use Yajra\DataTables\Services\DataTable;
 class SkillDataTable extends DataTable
 {

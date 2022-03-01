@@ -30,7 +30,9 @@ class ExperienceDataTable extends DataTable
             ->rawColumns(['action'])
             ->addIndexColumn()
             ->addColumn('description', function (Experience $experience) {
-                return $experience->explanations;
+                foreach($experience->explanations as $description) {
+                    return $description->explanation;
+                }
             })
             ->filterColumn('description', function($query, $keyword) {
                 return $this->dataTable->filterDescriptioncCol($query, $keyword);

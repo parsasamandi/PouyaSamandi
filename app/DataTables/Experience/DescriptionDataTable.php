@@ -2,7 +2,7 @@
 
 namespace App\DataTables\Experience;
 
-use App\Models\Refree;
+use App\Models\Experience;
 use App\Models\Explanation;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -48,7 +48,6 @@ class DescriptionDataTable extends DataTable
      */
     public function query(Explanation $model)
     {
-       //  return $model::where('explainable_type', Experience::class);
        return $model::where('explainable_type', Experience::class);        
     }
 
@@ -76,7 +75,7 @@ class DescriptionDataTable extends DataTable
             Column::make('explanation')
             ->title('Description'),
             Column::make('explainable_id')
-            ->title("Refree's name"),
+            ->title("Experience's headline"),
             $this->dataTable->setActionCol('| Edit')
         ];
     }

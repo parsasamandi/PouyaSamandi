@@ -41,11 +41,10 @@ class ExperienceController extends Controller
         return $dataTable->render('experience.list');
     }
 
-    // Store refree
+    // Store experience
     public function store(StoreExperienceRequest $request)
     {
-
-        DB::transaction(function () use ($request) {
+        DB::transaction(function() use($request) {
 
             $id = $request->get('id');
 
@@ -53,16 +52,23 @@ class ExperienceController extends Controller
                 ['id' => $id], ['headline' => $request->get('headline')]
             );
 
-            $experience->explanations()->updateOrCreate(['explainable_id' => $id], ['explanation' => $request->get('descriptions'),]);
+            if($request->has('descriptions')) {
+
+                foreach($request->get('descriptions') as $description) {
+                    // Experience's descriptions
+                    $experience->explanations()->updateOrCreate(['explainable_id' => $id], ['explanation' => $description]);
+                }
+            }
         });
 
         return $this->getAction($request->get('button_action'));
+
     }
 
     // Edit
     public function edit(Request $request)
     {
-        return $this->action->editWithDescription($this->experience, $request->get('id'));
+        return $this->action->edit($this->experience, $request->get('id'));
     }
 
     // Delete

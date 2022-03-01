@@ -14,7 +14,7 @@
     <x-admin.insert size="modal-l" formId="skillDescriptionForm">
         <x-slot name="content">
             <div class="row">
-                <x-textarea key="description" placeholder="Description" class="col-md-12" />
+                <x-textarea key="description" placeholder="Description" rows="7" class="col-md-12" />
             </div>
         </x-slot>
     </x-admin.insert>

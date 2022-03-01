@@ -17,7 +17,7 @@
                 {{-- Title --}}
                 <x-input key="title" name="Title" class="col-md-12 mb-2" />
 
-                @include('includes.description', ['multiple' => 'multipe'])
+                @include('includes.description', ['multiple' => 'multiple'])
             </div>
         </x-slot>
     </x-admin.insert>
@@ -76,7 +76,6 @@
                     success: function(data) {
                         action.editOnSuccess($id);
                         $('#title').val(data.title);
-                        console.log($('select[name="descriptions[]"]').val());
                         $('select[name="descriptions[]"]').val(data.explanations.explanation).trigger('change');
 
                         // values = '';
