@@ -29,14 +29,6 @@ class ExperienceDataTable extends DataTable
             ->eloquent($query)
             ->rawColumns(['action'])
             ->addIndexColumn()
-            ->addColumn('description', function (Experience $experience) {
-                foreach($experience->explanations as $description) {
-                    return $description->explanation;
-                }
-            })
-            ->filterColumn('description', function($query, $keyword) {
-                return $this->dataTable->filterDescriptioncCol($query, $keyword);
-            })
             ->addColumn('action', function (Experience $experience) {
                 return $this->dataTable->setAction($experience->id);
             });
@@ -75,8 +67,6 @@ class ExperienceDataTable extends DataTable
             $this->dataTable->getIndexCol(),
             Column::make('headline')
             ->title('Headline'),
-            Column::computed('description')
-            ->title('Description'),
             $this->dataTable->setActionCol('| Edit')
         ];
     }

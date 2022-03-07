@@ -28,8 +28,6 @@ class SkillController extends Controller
 
         $vars['skillTable'] = $dataTable->html();
 
-        $vars['descriptions'] = Explanation::select('id', 'explanation')->where('explainable_type', Skill::class)->get();
-
         return view('skill.list', $vars);
     }
 

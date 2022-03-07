@@ -19,9 +19,7 @@
                 {{-- Image link --}}
                 <x-input type="file" key="image" name="Image" class="col-md-12 mb-3" />
                 {{-- Link info --}}
-                <x-input key="link" name="Information link" class="col-md-12 mb-3" />
-                {{-- Description --}}
-                @include('includes.description', ['name' => 'descriptions'])
+                <x-input key="link" name="Information link" class="col-md-12" />
             </div>
         </x-slot>
     </x-admin.insert>

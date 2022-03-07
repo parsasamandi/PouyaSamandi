@@ -35,12 +35,6 @@ class RefreeDataTable extends DataTable
             ->editColumn('link', function (Refree $refree) {
                 return "<a href='$refree->link'>Link address</a>";
             })
-            ->addColumn('description', function (Refree $refree) {
-                return Str::limit(optional($refree->explanations)->explanation, 80, ' (details)');
-            })
-            ->filterColumn('description', function($query, $keyword) {
-                return $this->dataTable->filterDescriptioncCol($query, $keyword);
-            })
             ->addColumn('action', function (Refree $refree) {
                 return $this->dataTable->setAction($refree->id);
             });
@@ -83,8 +77,6 @@ class RefreeDataTable extends DataTable
             ->title('Image'),
             Column::make('link')
             ->title('Link'),
-            Column::computed('description')
-            ->title('Description'),
             $this->dataTable->setActionCol('| Edit')
         ];
     }

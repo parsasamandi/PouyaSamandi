@@ -14,7 +14,18 @@
     <x-admin.insert size="modal-l" formId="refreeDescriptionForm">
         <x-slot name="content">
             <div class="row">
-                <x-textarea key="description" placeholder="Description" class="col-md-12" />
+
+                {{-- Description --}}
+                <x-textarea key="description" placeholder="Description" class="col-md-12 mb-2" />
+
+                {{-- Refree selectBox --}}
+                <x-admin.selectBox colSize="12" name="Refree" key="refree">
+                    <x-slot name="content">
+                        @foreach ($refrees as $refree)
+                            <option value="{{ $refree->id }}">{{ $refree->name }}</option>
+                        @endforeach
+                    </x-slot>
+                </x-admin.selectBox>
             </div>
         </x-slot>
     </x-admin.insert>
@@ -33,7 +44,7 @@
 
     <script>
         $(document).ready(function() {
-            
+
             // Admin DataTable And Action Object
             let dt = window.LaravelDataTables['refreeDescriptionTable'];
             let action = new RequestHandler(dt, '#refreeDescriptionForm', 'refreeDescription');
@@ -57,9 +68,9 @@
             }
 
             function edit($id) {
-                
+
                 action.reloadModal();
-                
+
                 $.ajax({
                     url: "{{ url('refreeDescription/edit') }}",
                     method: "get",
@@ -77,4 +88,3 @@
     </script>
 
 @endsection
-

@@ -14,8 +14,17 @@
     <x-admin.insert size="modal-l" formId="experienceDescriptionForm">
         <x-slot name="content">
             <div class="row">
-                {{-- Description --}}
-                <x-textarea key="description" placeholder="Description" rows="7" class="col-md-12" />
+                {{-- Description textarea --}}
+                <x-textarea key="description" placeholder="Description" rows="7" class="col-md-12 mb-2" />
+
+                {{-- Experience selectBox --}}
+                <x-admin.selectBox colSize="12" name="Experience" key="experience">
+                    <x-slot name="content">
+                        @foreach ($experiences as $experience)
+                            <option value="{{ $experience->id }}">{{ $experience->headline }}</option>
+                        @endforeach
+                    </x-slot>
+                </x-admin.selectBox>
             </div>
         </x-slot>
     </x-admin.insert>

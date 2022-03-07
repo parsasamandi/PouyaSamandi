@@ -27,6 +27,8 @@ class DescriptionController extends Controller
         // refree description Table
         $vars['refreeDescriptionTable'] = $dataTable->html();
 
+        $vars['refrees'] = Refree::select('id', 'name')->get();
+
         return view('refree.descriptionlist', $vars);
     }
 
@@ -41,7 +43,8 @@ class DescriptionController extends Controller
 
         Explanation::updateOrCreate(
             ['id' => $request->get('id')],
-            ['explanation' => $request->get('description'), 'explainable_type' => Refree::class]
+            ['explanation' => $request->get('description'), 'explainable_id' => $request->get('refree'),
+            'explainable_type' => Refree::class]
         );
         
         return $this->getAction($request->get('button_action'));

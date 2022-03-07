@@ -15,9 +15,7 @@
         <x-slot name="content">
             <div class="row">
                 {{-- Title --}}
-                <x-input key="title" name="Title" class="col-md-12 mb-2" />
-
-                @include('includes.description', ['multiple' => 'multiple'])
+                <x-input key="title" name="Title" class="col-md-12" />
             </div>
         </x-slot>
     </x-admin.insert>

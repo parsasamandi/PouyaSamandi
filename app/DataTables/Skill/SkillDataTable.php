@@ -27,19 +27,6 @@ class SkillDataTable extends DataTable
             ->eloquent($query)
             ->addIndexColumn()
             ->rawColumns(['action'])
-            ->editColumn('title', function (Skill $skill) {
-                return $skill->title;
-            })
-            ->addColumn('description', function (Skill $skill) {
-                foreach($skill->explanations as $description) {
-                    return $description->explanation;
-                }
-            })
-            ->filterColumn('explanation', function($query, $keyword) {
-                
-                return $this->dataTable->filterColumn($query, 
-                    'id in (select explanation_id from explanations where explanation like ?)', $keyword);
-            })
             ->addColumn('action', function (Skill $skill) {
                 return $this->dataTable->setAction($skill->id);
             });
@@ -78,8 +65,6 @@ class SkillDataTable extends DataTable
             $this->dataTable->getIndexCol(),
             Column::make('title')
             ->title('Title'),
-            Column::computed('description') // This column is not in database
-            ->title('Description'),
             $this->dataTable->setActionCol('| Edit')
         ];
     }

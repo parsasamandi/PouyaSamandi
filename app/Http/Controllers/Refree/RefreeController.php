@@ -32,8 +32,6 @@ class RefreeController extends Controller
 
         $vars['refreeTable'] = $dataTable->html();
 
-        $vars['descriptions'] = $this->action->getDescription(Refree::class);
-
         return view('refree.list', $vars);
     }
 

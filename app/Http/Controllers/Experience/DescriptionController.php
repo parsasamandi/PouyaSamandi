@@ -27,7 +27,7 @@ class DescriptionController extends Controller
 
         $vars['experienceDescriptionTable'] = $dataTable->html();
 
-        $vars['descriptions'] = $this->action->getDescription(Experience::class);
+        $vars['experiences'] = Experience::select('id', 'headline')->get();
 
         return view('experience.descriptionList', $vars);
     }
@@ -39,13 +39,15 @@ class DescriptionController extends Controller
     }
 
     // Store refree
-    public function store(StoreDescriptionRequest $request) {
+    public function store(StoreDescriptionRequest $request)
+    {
 
         Explanation::updateOrCreate(
             ['id' => $request->get('id')],
-            ['explanation' => $request->get('description'), 'explainable_type' => Experience::class]
+            ['explanation' => $request->get('description'), 'explainable_id' => $request->get('experience'),
+            'explainable_type' => Experience::class]
         );
-        
+
         return $this->getAction($request->get('button_action'));
     }
 

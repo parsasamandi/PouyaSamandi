@@ -30,8 +30,6 @@ class ExperienceController extends Controller
 
         $vars['experienceTable'] = $dataTable->html();
 
-        $vars['descriptions'] = $this->action->getDescription(Experience::class);
-
         return view('experience.list', $vars);
     }
 
