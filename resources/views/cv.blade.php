@@ -4,14 +4,14 @@
     <!-- Sidebar And Navgiation bar -->
     <x-sidebar>
         <x-slot name="cv_titles">
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Experience')">Experience</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Education')">Education</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Publication')">Publication &
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('experience')">Experience</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('education')">Education</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('publication')">Publication &
                     Presentation</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Interests')">Fields Of
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('interests')">Fields Of
                     Interests</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Skills')">Skills</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('Refrees')">Refrees</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('skills')">Skills</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('refrees')">Refrees</a></li>
         </x-slot>
     </x-sidebar>
 

@@ -51,6 +51,7 @@
             // Record modal
             $('#create_record').click(function() {
                 action.openModal();
+                action.cleanDropbox('#experience');
             });
 
             // Insert
@@ -68,6 +69,7 @@
 
             function edit($id) {
 
+                // action.cleanDropbox('#experience');
                 action.reloadModal();
 
                 $.ajax({
@@ -79,6 +81,7 @@
                     success: function(data) {
                         action.editOnSuccess($id);
                         $('#description').val(data.explanation);
+                        $('select[name="experience"]').val(data.explainable_id).trigger('change');
                     }
                 })
             }

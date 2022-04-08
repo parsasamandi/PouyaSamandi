@@ -42,6 +42,8 @@
                         {{-- Admin --}}
                         <x-admin.parentUrl text="Admin" fontAwesome="fa fa-user">
                             <x-slot name="content">
+                                {{-- List --}}
+                                <x-admin.parentUrlItem name="Admin" url="skill\list" fontAwesome="fas fa-list" />
                             </x-slot>
                         </x-admin.parentUrl>
 

@@ -38,7 +38,7 @@ class DescriptionController extends Controller
         return $dataTable->render('experience.descriptionList');
     }
 
-    // Store refree
+    // Store experience
     public function store(StoreDescriptionRequest $request)
     {
 

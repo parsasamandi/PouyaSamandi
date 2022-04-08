@@ -15,7 +15,6 @@ class StoreExperienceRequest extends FormRequest
     {
         return [
             'headline' => 'required',
-            'descriptions' => 'required'
         ];
     }
 }
