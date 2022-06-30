@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>CV</title>
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="assets/css/cv.css" rel="stylesheet" />
+</head>
+
+<script>
+    // Address different parts of the website
+    function goto($hashtag) {
+        document.location = "cv.html#" + $hashtag;
+    }
+
+    // Hide submenus
+    function SidebarCollapse() {
+        $('.menu-collapsed').toggleClass('d-none');
+        $('.sidebar-submenu').toggleClass('d-none');
+        $('.submenu-icon').toggleClass('d-none');
+        $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
+
+        // Treating d-flex/d-none on separators with title
+        var SeparatorTitle = $('.sidebar-separator-title');
+        if (SeparatorTitle.hasClass('d-flex')) {
+            SeparatorTitle.removeClass('d-flex');
+        } else {
+            SeparatorTitle.addClass('d-flex');
+        }
+
+        // Collapse/Expand icon
+        $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
+    }
+</script>
+
+<body class="is-preload">
+
+    <!-- Sidebar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">Pouya Samandi</span>
+            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+                    src="images/pouya2.jpeg" alt="" /></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li style="font-size:30px;" class="text-white">CV</li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('experience')">Experience</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('education')">Education</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('publication')">Publications &
+                        Presentations</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('interests')">Fields of
+                        Interests</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('skills')">Skills</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="goto('refrees')">Refrees</a></li>
+            </ul>
+            <!-- <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2 bg-white" type="search" placeholder="Search" aria-label="Search">
+                <button style="font-size:11px" class="btn bg-white" type="submit">Search</button>
+            </form>  -->
+        </div>
+    </nav>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top navBarStyle">
+        <a class="navbar-brand text-white" href="#">Pouya Samandi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="cv.html">CV</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="project.html">Projects</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" onclick="goto('footer')">Contact me <span
+                            class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Content-->
+    <div class="container-fluid p-0">
+        <!-- Experience-->
+        <section class="resume-section" id="experience">
+            <div class="resume-section-content">
+                <h3 class="my-5"><i class="fa fa-history"></i> Experience
+                    <!-- <img style="width:100px;height:100px;" src="images/Male-Teacher-Transparent.png" />  -->
+                </h3>
+                <div style="margin-top:-1em" class="d-flex flex-column flex-md-row justify-content-between">
+                    <div class="flex-grow-1">
+                        <h4 class="mb-0 text-danger">
+                            <img style="width:50px;height:55px;" src="images/teacher.png" />
+                            Teaching Experience
+                        </h4>
+                        <hr>
+                        <p>
+                            • Teaching High school Mathematics and Physics to Talash High School student, 2014-2016.
+                            <br>
+                            • "Linear Control", Mechanical Engineering Department.(Teacher Assistant), fall 2018.
+                        </p>
+                    </div>
+                    <!-- <div class="row"> -->
+                    <!-- <span class="text-primary">March 2013 - Present</span> -->
+                    <!-- </div> -->
+                </div>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
+                    <div class="flex-grow-1">
+                        <h4 class="mb-0 text-danger">
+                            <img style="width:55px;height:55px;" src="images/research_transparent.png" />
+                            Researching Experience
+                        </h4>
+                        <hr>
+                        <!-- <div class="subheading mb-3">Intelitec Solutions</div> -->
+                        <p>
+                            • Kinematic calibration of Sina-flex surgical robot by using Optimization and Machine
+                            Learning methods.
+                            <br>
+                            • Control of a Two-Wheeled Walker Robot for Balance Enhancement.
+                            <br>
+                            • Designing and fabricating a new concept of laparoscopic tool for Sina-flex surgical robot.
+                            <br>
+                            • Design and fabrication of dexterous robotic fingerfor B.Sc. final thesis.
+                            <br>
+                            • Designing and fabricating of robotic finger with a novel design.
+                            <br>
+                            • 2 DOF Robot With 2 Prismatic Joint And A Camera To Detect A Red-Point.
+                            <br>
+                            • Designing and fabricating a device for determining center of gravity for a complex body.
+                            <br>
+                            • Calibrating the temperature sensor with 0.1°C precision.
+                            <br>
+                            • Researching and designing PIG (device for cleaning pipeline system automatically and
+                            performing NDT.
+                            <br>
+                            • Researching and Writing a paper about Aviation biofuels with a group of B.Sc. Students.
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h4 class="mb-0 text-danger">
+                            <img style="width:60px;height:60px;" src="images/work_experience.png" />
+                            Work experience
+                        </h4>
+                        <hr>
+                        <p>
+                            • Working and Researching at Sina medical and Robotic Co. January 2019
+                            <br>
+                            • Internship, Otad Sana'at Company (Working hours: 140). Summer 2016-2017
+                            Automation Engineering, Mechatronic Systems and Robotic.
+                            <br>
+                            • School counselor, Talash High School, Tehran, Iran. 2014-2016
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Education-->
+        <section class="resume-section resume-section-bg" id="education">
+            <div style="margin-bottom:-3.5em" class="resume-section-content">
+                <h3 class="mb-4"><i class="fas fa-book-open"></i> Education</h3>
+                <!-- style="background-color:rgb(250, 207, 207);padding:20px" -->
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h4 class="mb-0 text-danger">
+                            <a href="http://www.iust.ac.ir/">
+                                <i class="fa fa-university"></i>
+                                Iran University of Science and Technology (IUST)
+                            </a>
+                        </h4>
+                        <div class="subheading mb-3">Bachelor of Mechanical Engineering</div>
+                        <p>
+                            GPA: 17.54 / 20 (3.8/4) (last two years). Total GPA of courses related to mechatronics: 3.9
+                            <br>
+                            TOEFL score: 98 out of 120 (R:24, L:28, S:24, W, 22).
+                            <br>
+                            Thesis topic: <span style="color:red">Design and fabrication of a robotic finger.For more
+                                information click on PROJECTS topic.</span>
+                            <br>
+                            <br>
+                            Iran University of Science and Technology is one of the best universities of Iran based on
+                            international rankings such as <a target="_blank"
+                                href="https://www.usnews.com/education/best-global-universities/iran-university-science-technology-505518"
+                                style="color:blue">US news</a>,<a target="_blank" style="color:blue"
+                                href="https://www.topuniversities.com/universities/iran-university-science-technology">QS</a>,
+                            and <a
+                                href="https://www.timeshighereducation.com/world-university-rankings/iran-university-science-and-technology"
+                                style="color:blue" target="_blank">Times Higher Education</a>.
+
+                            Iran University of Science and Technology is one of the best universities of Iran based on
+                            US news,QS,
+                            and Times Higher Education.
+                        </p>
+                    </div>
+                    <div class="flex-shrink-0"><span class="text-primary">june 2014 to present(one semester left)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        
+        <!-- Publications and Conference Presentations -->
+        <section class="resume-section" id="publication">
+            <div class="resume-section-content">
+                <h3 class="mb-3"><i class="fa fa-file-powerpoint"></i> Publications and Conference Presentations
+                </h3>
+                <!-- style="background-color:rgb(250, 207, 207);padding:20px" -->
+                <div class="d-flex flex-column flex-md-row justify-content-between">
+                    <div class="flex-grow-1">
+                        <h4 class="text-danger mb-3"><a href="http://www.iust.ac.ir/">
+                                Publications and Conference
+                                Presentations
+                            </a></h4>
+                        <p>
+                            • Aviation Biofuels, second National Renewable Energy Award, July 2018.
+                            <br>
+                            • Design and Fabrication of a New Robot Finger, Biennial International Experimental Solid
+                            Mechanics Conference 2017, Tehran, Iran.
+                            <br>
+                            • Sina-flex calibration using machine learning methods. (ongoing project).
+                            <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+
+        <!-- Interests-->
+        <section class="resume-section resume-section-bg" id="interests">
+            <div class="resume-section-content">
+                <h4 class="test-danger"><i class="fa fa-thumbs-up"></i> Fields Of Interests</h4>
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- <p>
+                            <br>
+                        </p> -->
+                        <img style="margin-top:4em" class="interestField_image" src="images/robatic_arm.jpg" />
+                    </div>
+                    <div class="col-md-4">
+                        <p>
+                            • Robotics
+                            <br>
+                            • Control Engineering
+                        </p>
+                        <img class="interestField_image" src="images/robatic.jpg" />
+
+                    </div>
+                    <div class="col-md-4">
+                        <p>
+                            • Machine Learning
+                            <br>
+                            • Optimization
+                        </p>
+                        <img class="interestField_image" src="images/machinLearning.jpg" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+
+        <!-- Skills-->
+        <section class="resume-section" id="skills">
+            <div class="resume-section-content">
+                <h3 class="mb-3">
+                    <i class="fa fa-cogs"></i>
+                    Skills
+                </h3>
+                <div class="subheading mb-3 text-danger">
+                    Programming Languages and Tools
+                </div>
+                <p class="justify-center">
+                    • Computer: Solidworks, Matlab, Python, Adamas, Mathematica and C++.
+                    <br>
+                    • Microcontrollers: AVR and Arduino (open source electronic platform).
+                    <br>
+                    • Lots of successful experiences in team-working.
+                </p>
+                <div class="subheading mb-3 text-danger">languages</div>
+                <ul class="fa-ul mb-0 justify-center">
+                    <li>
+                        <span class="fa-li"><i class="fas fa-check"></i></span>
+                        Persian (native) English (fluent) Arabic ( familiar).
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-check"></i></span>
+                        TOEFL score: 98 out of 120 (R:24, L:28, S:24, W: 22).
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <hr class="m-0" />
+
+        <!-- Refrees -->
+        <section class="resume-section resume-section-bg" id="refrees">
+            <div class="resume-section-content justify-center">
+                <h3 class="mb-5">Referees</h3>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
+                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="col-md-10">
+                            <h4 class="mb-0 text-secondary">Prof. Davaie markazi
+                            </h4>
+                            <br>
+                            <p>
+                                Working with Dr. Davie as my supervisor is one of my biggest achievements.
+                                He has graduated as one of the most talented students from McGill university and is one
+                                of the well-known professors in the field of control and mechatronics.
+                                For more information click on <a style="color:blue"
+                                    href="http://mech.iust.ac.ir/content/55018/Amir-Hossein-Davaie-Markazi">Professor
+                                    Davaie Markazi</a> Email: markazi@iust.ac.ir
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <img style="width:100%;height:100%;margin-bottom:0.4em" src="images/drDavaie.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-column flex-md-row justify-content-between">
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
+                        <div class="col-md-10">
+                            <h4 class="mb-0 text-secondary">Dr.Esmail Khanmirza</h4>
+                            <br>
+                            <p>
+                                It is a great honor to work with Dr.Khanmirza as a co-supervisor.
+                                As a young professor, he shows great experience in his craft and is considered one of
+                                the best professors in the field of control and robotics
+                                For more information click on <a style="color:blue"
+                                    href="http://www.iust.ac.ir/content/28075/khanmirza">Dr. Esmaeel Khanmirza</a>
+                                Email: khanmirza@iust.ac.ir
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <img style="width:100%;height:100%" src="images/khanMirza.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-column flex-md-row justify-content-between">
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
+                        <div class="col-md">
+                            <h4 class="mb-0 text-secondary">Prof. Moharam Habibnejad Korayem</h4>
+                            <br>
+                            <p>
+                                Professor Habibnejad has been chosen as one of the highest ranked scientists during
+                                2017(top 1%).I passed one of my best courses called
+                                “Introduction to Robotics” with him.
+                                For more information click on <a style="color:blue"
+                                    href="http://www.iust.ac.ir/content/876/Habibnejad">Prof. Moharam Habibnejad
+                                    Korayem.</a>
+                                Email: hkorayem@iust.ac.ir
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <img style="width:100%;height:85%;margin:0" src="images/dr_habibnejad.jpg" />
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-column flex-md-row justify-content-between">
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
+                        <div class="col-md-10">
+                            <h4 class="mb-0 text-secondary">Dr. Alireza Alamdar</h4>
+                            <br>
+                            <p>
+                                Dr. Alamdar recently received his Ph.D. from Sharif University.
+                                He has been working as a project manager at Sina Medical Robotics Company.
+                                Working under his supervision has led to my scientific and research progress.
+                                For more information click on <a style="color:blue"
+                                    href="https://sites.google.com/view/alirezaalamdar/home?authuser=0">Dr. Alireza
+                                    Alamdar </a>
+                                Email: alireza.alamdar@gmail.com
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <img style="width:100%;height:100%;margin-bottom:0.4em" src="images/alirezaAlamdar.jpg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <!-- <footer id="footer">
+        <ul class="menu">
+            <a href="mailto:p.samandizadeh.shoushtari">samandi.pouya@gmail.com</a>
+        </ul>
+    </footer> -->
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.poptrox.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
+<!-- #bd5d38 -->
