@@ -82,8 +82,13 @@ class AdminController extends Controller
     }
 
     // Show
+<<<<<<< HEAD
     public function adminHome() {
         return view('adminHome');
+=======
+    public function admin() {
+        return view('admin/home');
+>>>>>>> Database .sql file is added to the project
     }
 
     // Logout

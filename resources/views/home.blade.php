@@ -45,7 +45,11 @@
 
 
 	<!-- Intro -->
+<<<<<<< HEAD
 	<section style="background-image: url(/images/{{ $setting_image }})" id="intro" class="main style1 dark fullscreen">
+=======
+	<section style="background-image: url(/images/test15.png)" id="intro" class="main style1 dark fullscreen">
+>>>>>>> Database .sql file is added to the project
 		<div class="content">
 			<!-- style="margin-bottom:5em;padding-left:40em;" -->
 			<header>

@@ -32,7 +32,11 @@ Route::group(['middleware' => 'auth'], function () {
   });
 
   // Admin Page
+<<<<<<< HEAD
   Route::get('/admin/home', 'AdminController@adminHome');
+=======
+  Route::get('/admin/home', 'AdminController@admin');
+>>>>>>> Database .sql file is added to the project
   Route::get('/logout', 'AdminController@logout');
 
   // Experience
