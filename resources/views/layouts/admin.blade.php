@@ -96,7 +96,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; pouyasamandi.ir</div>
+                        <div class="text-muted">Copyright &copy; Start Bootstrap - SB Admin v6.0.1 (https://startbootstrap.com/templates/sb-admin) </div>
                         <div>
                             Privacy Policy
                             &middot;
